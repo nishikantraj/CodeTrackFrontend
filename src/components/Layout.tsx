@@ -1,19 +1,19 @@
 import { PropsWithChildren } from "react"
 import Header from "./Header"
+import Footer from "./Footer"
+
 
 const Layout = ({children}:PropsWithChildren) => {
   return (
-    <div className="px-10 py-5 border-2 border-red-500">
+    <div className="px-15 py-2">
         <Header/>
 
         <main>
             {children}
         </main>
 
-        <footer className="flex justify-center items-center p-4">
-            <div>
-                <p className="font-bold tracking-tight">Made with ❤️ by <a href="https://github.com/nishikantraj" target="_blank"><span className="text-blue-500">Nishikant</span></a></p>
-            </div>
+        <footer className="mt-30">
+          <Footer/>
         </footer>
     </div>
   )
