@@ -1,1 +1,14 @@
 @import "tailwindcss";
+
+:root{
+    background: #000;
+    color: aliceblue;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+    display: none; /* Hides scrollbar in WebKit browsers */
+}
+.custom-scrollbar {
+scrollbar-width: none; /* Hides scrollbar in Firefox */
+}
+  
