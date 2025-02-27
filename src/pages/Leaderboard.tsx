@@ -34,7 +34,7 @@ export default function Leaderboard() {
 
   if(isLoading)
     return (
-      <div className="flex justify-center items-center py-10">
+      <div className="flex justify-center items-center py-10 min-h-screen">
         <div className="flex flex-col items-center space-y-4 bg-[#1B4332] bg-opacity-60 backdrop-blur-lg p-6 rounded-xl shadow-lg">
           {/* Pulsing Crown Icon (For 1st Place) */}
           <div className="w-14 h-14 bg-gradient-to-r from-[#A7D7C5] to-[#F4E285] rounded-full animate-pulse"></div>
