@@ -8,7 +8,7 @@ import coder from "../assets/Logo/Coder.png";
 import languages from "@/utils/language";
 import { useQuery } from "@tanstack/react-query";
 import fetchData from "@/utils/fetchData";
-
+// import data from '../utils/dummyData'
 interface LanguageUsage {
   language: string;
   minutes: string;
@@ -57,7 +57,7 @@ export default function Leaderboard() {
         <p>Error: {error.message}</p>
       )
   return (
-    <div className="min-h-screen py-6 px-4 bg-[#0D1B1E] flex flex-col items-center">
+    <div className="min-h-screen py-6 px-4 bg-[#0D1B1E] rounded-lg flex flex-col items-center">
       {/* Title with Gradient Effect */}
       <h1 className="text-5xl font-bold bg-gradient-to-r from-[#A7D7C5] to-[#F4E285] text-transparent bg-clip-text mb-6">
         Codetracker Leaderboard 🏆
@@ -167,5 +167,6 @@ export default function Leaderboard() {
         </Table>
       </div>
     </div>
+    
   );
 }
