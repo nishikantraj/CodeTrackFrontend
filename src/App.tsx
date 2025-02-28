@@ -5,6 +5,8 @@ import Leaderboard from "./pages/Leaderboard"
 import About from "./pages/About"
 import Installation from "./pages/Installation"
 import FAQ from "./pages/FAQ"
+import SigninForm from "./pages/SigninForm"
+import SignupForm from "./pages/SignupForm"
 
 function App() {
 
@@ -16,6 +18,8 @@ function App() {
           <Route path="/about" element={<About/>}/>
           <Route path="/installation" element={<Installation/>}/>
           <Route path="/faq" element={<FAQ/>}/>
+          <Route path="/signin" element={<SigninForm/>}/>
+          <Route path="/signup" element={<SignupForm/>}/>
         </Routes>
       </Layout>
     </div>
