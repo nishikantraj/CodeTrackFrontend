@@ -10,7 +10,6 @@ import Typed from "typed.js";
 import BASE_API_URL from "@/utils/config";
 import axios from 'axios';
 import toast from 'react-hot-toast';
-import { useNavigate } from "react-router-dom";
 
 
 const onToast = () => toast('Coming soon...', {
@@ -36,7 +35,6 @@ const onToast2 = () => toast("Please remember you password or write it down some
 );
 
 export function Signup({ className, ...props }: React.ComponentProps<"div">) {
-  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     name:"",
@@ -56,12 +54,14 @@ export function Signup({ className, ...props }: React.ComponentProps<"div">) {
     setLoading(true);
 
     try {
-      await axios.post(`${BASE_API_URL}/user/register`, formData);
-      toast.success("Signup successful! Please log in.")
-      // console.log(response);
+      const response = await axios.post(`${BASE_API_URL}/user/register`, formData, { withCredentials: true });
+      toast.success("Signup successful!")
+      const {token, user} = response.data;
+      localStorage.setItem("token", token);
+      localStorage.setItem("userData",  JSON.stringify(user));
       
-      // window.location.href = "/signin";
-      setTimeout(() => navigate("/signin"), 2000);
+      setTimeout(() => window.location.href = "/", 2000);
+
     } catch (err:any) {
       if (err.response?.status === 400) {
         const errorMessages = err.response?.data?.message;
