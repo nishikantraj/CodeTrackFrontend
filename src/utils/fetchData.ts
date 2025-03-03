@@ -1,5 +1,7 @@
+import BASE_API_URL from "./config";
+
 const fetchData = async ()=>{
-    const response = await fetch("https://codetrackbackend.onrender.com/api/leaderboard/board");
+    const response = await fetch(`${BASE_API_URL}/leaderboard/board`);
     if(!response.ok)
         throw new Error("Failed to fetch data")
 

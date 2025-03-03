@@ -10,7 +10,7 @@ import BASE_API_URL from "@/utils/config";
 import { Github, Twitter } from "lucide-react";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { Link, useNavigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 
 const onToast = () => toast('Coming soon...', {
   icon: "⏳",
@@ -30,7 +30,6 @@ const onToast = () => toast('Coming soon...', {
 });
 
 export function Signin({ className, ...props }: React.ComponentProps<"div">) {
-  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     email:"",
@@ -46,7 +45,7 @@ export function Signin({ className, ...props }: React.ComponentProps<"div">) {
     })
   };
 
-  // const handleSubmit = async (e: React.FormEvent)=>{
+
   //   e.preventDefault();
   //   setLoading(true);
 
@@ -88,10 +87,14 @@ export function Signin({ className, ...props }: React.ComponentProps<"div">) {
     setLoading(true);
   
     try {
-      await axios.post(`${BASE_API_URL}/user/login`, formData);
+      const response = await axios.post(`${BASE_API_URL}/user/login`, formData,{ withCredentials: true });
       toast.success("Successfully logged in.");
+      const {token, user} = response.data;
+      localStorage.setItem("token", token);
+      localStorage.setItem("userData",  JSON.stringify(user));
       
-      setTimeout(() => navigate("/"), 2000);
+      setTimeout(() => window.location.href = "/", 2000);
+      
     } catch (err: any) {
   
       if (err.response?.status === 400) {
@@ -135,7 +138,6 @@ export function Signin({ className, ...props }: React.ComponentProps<"div">) {
         <CardContent className="grid p-0 md:grid-cols-2">
           <form onSubmit={handleSubmit}
             className="p-6 md:p-8"
-
           >
             <div className="flex flex-col gap-6">
               <div className="flex flex-col items-center text-center">
