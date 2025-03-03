@@ -4,21 +4,21 @@ import { Button } from "./ui/Button"
 const Footer = () => {
     return (
       <div className="bg-black text-white px-6 py-6 mt-10 border-t border-gray-700">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <div>
-            <img src={logo} alt="CodeTracker" width={120} height={100} />
+        <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+          <div className="mb-6 md:mb-0">
+            <img src={logo} alt="CodeTracker" width={120} height={100} className="mx-auto md:mx-0" />
             <p className="text-xs mt-2">Copyright © 2025</p>
             <p className="text-xs">Code.Track.Improve</p>
           </div>
   
-          <div className="flex flex-col md:flex-row gap-6 text-sm">
+          <div className="flex flex-col md:flex-row gap-6 text-sm text-center">
             <span className="hover:text-green-300 cursor-pointer">Home</span>
             <span className="hover:text-green-300 cursor-pointer">How it works</span>
             <span className="hover:text-green-300 cursor-pointer">About us</span>
             <span className="hover:text-green-300 cursor-pointer">Privacy policy</span>
           </div>
   
-          <Button className="bg-yellow-400 text-black hover:bg-yellow-500">Contact us</Button>
+          <Button className="bg-yellow-400 text-black hover:bg-yellow-500 mt-4 md:mt-0">Contact us</Button>
         </div>
   
         <div className="border-t border-gray-700 mt-6 pt-4 flex justify-center gap-6">
