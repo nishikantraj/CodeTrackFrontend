@@ -41,6 +41,11 @@ const Header = () => {
     }
   };
 
+  // Function to close mobile menu
+  const closeMobileMenu = () => {
+    setMenuOpen(false);
+  };
+
   return (
     <div className="flex justify-between items-center px-6 py-4 bg-black text-white shadow-md relative">
       <div className="flex items-center gap-4">
@@ -54,10 +59,34 @@ const Header = () => {
 
       <nav className={`lg:flex lg:items-center lg:static absolute top-full left-0 w-full bg-black lg:w-auto lg:bg-transparent transition-all duration-300 ${menuOpen ? 'block' : 'hidden'}`}>
         <ul className="flex flex-col lg:flex-row gap-6 lg:gap-10 text-lg items-center p-4 lg:p-0">
-          <NavLink to={""} className={({ isActive }) => (isActive ? "text-green-400" : "hover:text-green-300")}>Home</NavLink>
-          <NavLink to={"about"} className={({ isActive }) => (isActive ? "text-green-400" : "hover:text-green-300")}>About</NavLink>
-          <NavLink to={"installation"} className={({ isActive }) => (isActive ? "text-green-400" : "hover:text-green-300")}>Installation</NavLink>
-          <NavLink to={"faq"} className={({ isActive }) => (isActive ? "text-green-400" : "hover:text-green-300")}>FAQ's</NavLink>
+          <NavLink 
+            to={""} 
+            className={({ isActive }) => (isActive ? "text-green-400" : "hover:text-green-300")}
+            onClick={closeMobileMenu}
+          >
+            Home
+          </NavLink>
+          <NavLink 
+            to={"about"} 
+            className={({ isActive }) => (isActive ? "text-green-400" : "hover:text-green-300")}
+            onClick={closeMobileMenu}
+          >
+            About
+          </NavLink>
+          <NavLink 
+            to={"installation"} 
+            className={({ isActive }) => (isActive ? "text-green-400" : "hover:text-green-300")}
+            onClick={closeMobileMenu}
+          >
+            Installation
+          </NavLink>
+          <NavLink 
+            to={"faq"} 
+            className={({ isActive }) => (isActive ? "text-green-400" : "hover:text-green-300")}
+            onClick={closeMobileMenu}
+          >
+            FAQ's
+          </NavLink>
         </ul>
       </nav>
 
@@ -84,8 +113,12 @@ const Header = () => {
           </>
         ) : (
           <div className="flex gap-4">
-            <NavLink to={"signin"}><Button className="bg-green-500 text-black hover:bg-green-600 cursor-pointer">Signin</Button></NavLink>
-            <NavLink to={"signup"}><Button className="bg-yellow-400 text-black hover:bg-yellow-500 cursor-pointer">Signup</Button></NavLink>
+            <NavLink to={"signin"} onClick={closeMobileMenu}>
+              <Button className="bg-green-500 text-black hover:bg-green-600 cursor-pointer">Signin</Button>
+            </NavLink>
+            <NavLink to={"signup"} onClick={closeMobileMenu}>
+              <Button className="bg-yellow-400 text-black hover:bg-yellow-500 cursor-pointer">Signup</Button>
+            </NavLink>
           </div>
         )}
       </div>
