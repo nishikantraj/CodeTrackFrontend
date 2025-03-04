@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "./ui/Button";
-import logo from "../assets/image/codetracker-Photoroom.png";
+import logo from "../assets/image/codechamp.png";
 import { Link, NavLink } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import profile from "../assets/image/profile.png";
@@ -48,7 +48,7 @@ const Header = () => {
           {menuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
         <Link to={""}>
-          <img src={logo} alt="CodeTracker" className="cursor-pointer w-32" />
+          <img src={logo} alt="CodeTracker" className="cursor-pointer w-32 brightness-125 contrast-110" />
         </Link>
       </div>
 
@@ -84,8 +84,8 @@ const Header = () => {
           </>
         ) : (
           <div className="flex gap-4">
-            <NavLink to={"signin"}><Button className="bg-green-500 text-black hover:bg-green-600">Signin</Button></NavLink>
-            <NavLink to={"signup"}><Button className="bg-yellow-400 text-black hover:bg-yellow-500">Signup</Button></NavLink>
+            <NavLink to={"signin"}><Button className="bg-green-500 text-black hover:bg-green-600 cursor-pointer">Signin</Button></NavLink>
+            <NavLink to={"signup"}><Button className="bg-yellow-400 text-black hover:bg-yellow-500 cursor-pointer">Signup</Button></NavLink>
           </div>
         )}
       </div>

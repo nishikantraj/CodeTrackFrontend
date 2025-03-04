@@ -17,7 +17,7 @@ const faqs = [
   },
   {
     question: "Do I need to create an account?",
-    answer: "Yes, you need to sign up to get a unique session key that links your VS Code activity to your Codetracker profile.",
+    answer: "Yes, you need to sign up to get a unique session key that links your VS Code activity to your Codechamp profile.",
   },
   {
     question: "Is Codetracker free to use?",
@@ -25,7 +25,7 @@ const faqs = [
   },
   {
     question: "Where can I see my coding stats?",
-    answer: "You can view your stats and leaderboard ranking on the Codetracker website after logging in.",
+    answer: "You can view your stats and leaderboard ranking on the Codechamp website after logging in.",
   },
 ];
 
@@ -82,7 +82,7 @@ export default function FAQ() {
       <div className="text-center mt-12">
         <a href="https://marketplace.visualstudio.com/items?itemName=Nishikant.codetrackerextension" target="_blank" rel="noopener noreferrer">
           <button className="bg-[#A7D7C5] text-[#102A26] font-semibold px-8 py-4 text-lg rounded-lg shadow-lg hover:bg-[#8CC3B3] transition cursor-pointer">
-            Get Started with Codetracker 🚀
+            Get Started with Codechamp 🚀
           </button>
         </a>
       </div>

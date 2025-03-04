@@ -6,7 +6,7 @@ const fetchData = async ()=>{
         throw new Error("Failed to fetch data")
 
     const data = await response.json();
-
+    
     //Sort the data 
     const sortedLeaderboard = data.leaderboard.map((person:any)=>({
         ...person,

@@ -29,9 +29,9 @@ export default function Installation() {
           <span ref={typedRef}></span>
         </h1>
         <p className="text-lg text-gray-300 mt-4">
-          Follow these steps to set up and start using CodeTracker.
+          Follow these steps to set up and start using Codechamp.
         </p>
-        <img src={geek} alt="CodeTracker Extension" className="mx-auto mt-6 w-24 rounded-lg shadow-lg" />
+        <img src={geek} alt="Codechamp Extension" className="mx-auto mt-6 w-24 rounded-lg shadow-lg" />
       </div>
 
       {/* Installation Steps */}
@@ -40,7 +40,7 @@ export default function Installation() {
         <Card className="bg-[#1B4332] border-none shadow-md p-6 text-center">
           <UserPlus className="text-[#A7D7C5] w-12 h-12 mx-auto" />
           <h3 className="text-xl font-bold mt-4">Step 1: Sign Up & Get Your Session Key</h3>
-          <p className="text-gray-300 mt-2">Visit CodeTracker and create an account. A unique session key will be generated for you to link your VS Code activity.</p>
+          <p className="text-gray-300 mt-2">Visit Codechamp and create an account. A unique session key will be generated for you to link your VS Code activity.</p>
         </Card>
 
         <Card className="bg-[#1B4332] border-none shadow-md p-6 text-center">
@@ -71,7 +71,7 @@ export default function Installation() {
           rel="noopener noreferrer"
         >
           <Button className="bg-[#A7D7C5] text-[#102A26] font-semibold px-8 py-4 text-lg rounded-lg shadow-lg hover:bg-[#8CC3B3] transition cursor-pointer">
-            Install CodeTracker Extension 🚀
+            Install Extension 🚀
           </Button>
         </a>
       </div>

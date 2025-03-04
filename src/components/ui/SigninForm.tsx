@@ -143,7 +143,7 @@ export function Signin({ className, ...props }: React.ComponentProps<"div">) {
               <div className="flex flex-col items-center text-center">
                 <h1 className="text-2xl font-bold text-[#3DDC97]"><span ref={typedRef}></span></h1>
                 <p className="text-balance text-gray-400">
-                  Login to your Codetracker account
+                  Login to your Codechamp account
                 </p>
               </div>
               <div className="grid gap-2">
