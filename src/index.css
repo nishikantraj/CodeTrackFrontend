@@ -31,4 +31,3 @@ scrollbar-width: none; /* Hides scrollbar in Firefox */
   .animate-fadeIn {
     animation: fadeIn 1s ease-in-out;
   }
-  
