@@ -1,14 +1,14 @@
-import logo from '../assets/image/codetracker-Photoroom.png'
+import logo from '../assets/image/codechamp.png'
 import { Button } from "./ui/Button"
 
 const Footer = () => {
     return (
       <div className="bg-black text-white px-6 py-6 mt-10 border-t border-gray-700">
         <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
-          <div className="mb-6 md:mb-0">
-            <img src={logo} alt="CodeTracker" width={120} height={100} className="mx-auto md:mx-0" />
-            <p className="text-xs mt-2">Copyright © 2025</p>
-            <p className="text-xs">Code.Track.Improve</p>
+          <div className="mb-6 md:mb-0 flex flex-col items-center">
+            <img src={logo} alt="CodeTracker" className="cursor-pointer w-32 brightness-125 contrast-110 mx-auto md:mx-0" />
+
+            <p className="text-xs mb-5 pl-2">Copyright © 2025</p>
           </div>
   
           <div className="flex flex-col md:flex-row gap-6 text-sm text-center">

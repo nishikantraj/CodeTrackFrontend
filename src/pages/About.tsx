@@ -30,9 +30,9 @@ export default function About() {
           <span ref={typedRef}></span>
         </h1>
         <p className="text-lg text-gray-300 mt-4">
-          Codetracker helps developers track their coding activity, analyze time spent per language, and stay motivated by competing with others.
+          Codechamp helps developers track their coding activity, analyze time spent per language, and stay motivated by competing with others.
         </p>
-        <img src={person} alt="Codetracker Overview" className="mx-auto mt-6 w-24 rounded-lg shadow-lg" />
+        <img src={person} alt="Codechamp Overview" className="mx-auto mt-6 w-24 rounded-lg shadow-lg" />
       </div>
 
       {/* Features Section */}
@@ -41,7 +41,7 @@ export default function About() {
         <Card className="bg-[#1B4332] border-none shadow-md p-6 text-center">
           <Clock className="text-[#A7D7C5] w-12 h-12 mx-auto" />
           <h3 className="text-xl font-bold mt-4">Automated Tracking</h3>
-          <p className="text-gray-300 mt-2">Codetracker automatically records your coding time and activity inside VS Code.</p>
+          <p className="text-gray-300 mt-2">Codechamp automatically records your coding time and activity inside VS Code.</p>
         </Card>
 
         <Card className="bg-[#1B4332] border-none shadow-md p-6 text-center">
@@ -68,7 +68,7 @@ export default function About() {
       <div className="text-center mt-12">
         <a href="https://marketplace.visualstudio.com/items?itemName=Nishikant.codetrackerextension" target="_blank" rel="noopener noreferrer">
           <Button className="bg-[#A7D7C5] text-[#102A26] font-semibold px-8 py-4 text-lg rounded-lg shadow-lg hover:bg-[#8CC3B3] transition cursor-pointer">
-            Install Codetracker Extension 🚀
+            Install Extension 🚀
           </Button>
         </a>
       </div>
