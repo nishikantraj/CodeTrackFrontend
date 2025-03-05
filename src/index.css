@@ -31,3 +31,18 @@ scrollbar-width: none; /* Hides scrollbar in Firefox */
   .animate-fadeIn {
     animation: fadeIn 1s ease-in-out;
   }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+    display: inline-block;
+    white-space: nowrap;
+  }
