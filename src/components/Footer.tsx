@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import logo from '../assets/image/codechamp.png'
 import { Button } from "./ui/Button"
 
@@ -18,7 +19,9 @@ const Footer = () => {
             <span className="hover:text-green-300 cursor-pointer">Privacy policy</span>
           </div>
   
-          <Button className="bg-yellow-400 text-black hover:bg-yellow-500 mt-4 md:mt-0">Contact us</Button>
+          <NavLink to={"/contact"}>
+            <Button className="bg-yellow-400 text-black hover:bg-yellow-500 cursor-pointer mt-4 md:mt-0">Contact us</Button>
+          </NavLink>
         </div>
   
         <div className="border-t border-gray-700 mt-6 pt-4 flex justify-center gap-6">
