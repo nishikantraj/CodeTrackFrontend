@@ -7,6 +7,7 @@ import Installation from "./pages/Installation"
 import FAQ from "./pages/FAQ"
 import SigninForm from "./pages/SigninForm"
 import SignupForm from "./pages/SignupForm"
+import Contact from "./pages/Contact"
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
           <Route path="/faq" element={<FAQ/>}/>
           <Route path="/signin" element={<SigninForm/>}/>
           <Route path="/signup" element={<SignupForm/>}/>
+          <Route path="/contact" element={<Contact/>}/>
         </Routes>
       </Layout>
     </div>
