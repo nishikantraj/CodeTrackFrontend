@@ -10,6 +10,7 @@ import Typed from "typed.js";
 import BASE_API_URL from "@/utils/config";
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import ReactGA from 'react-ga4';
 
 
 const onToast = () => toast('Coming soon...', {
@@ -35,6 +36,12 @@ const onToast2 = () => toast("Please remember you password or write it down some
 );
 
 export function Signup({ className, ...props }: React.ComponentProps<"div">) {
+
+  ReactGA.event({
+    category: 'User',
+    action: 'Sign Up',
+    label: 'Website'
+  });
 
   const [formData, setFormData] = useState({
     name:"",

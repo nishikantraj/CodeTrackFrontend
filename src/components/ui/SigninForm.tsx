@@ -11,6 +11,7 @@ import { Github, Twitter } from "lucide-react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Link} from "react-router-dom";
+import ReactGA from 'react-ga4';
 
 const onToast = () => toast('Coming soon...', {
   icon: "⏳",
@@ -30,6 +31,12 @@ const onToast = () => toast('Coming soon...', {
 });
 
 export function Signin({ className, ...props }: React.ComponentProps<"div">) {
+
+  ReactGA.event({
+    category: 'User',
+    action: 'Sign In',
+    label: 'Email'
+  });
 
   const [formData, setFormData] = useState({
     email:"",
