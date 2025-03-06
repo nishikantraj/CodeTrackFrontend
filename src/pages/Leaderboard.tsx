@@ -8,6 +8,7 @@ import coder from "../assets/Logo/Coder.png";
 import languages from "@/utils/language";
 import { useQuery } from "@tanstack/react-query";
 import fetchData from "@/utils/fetchData";
+import { useEffect, useState } from "react";
 // import data from '../utils/dummyData'
 interface LanguageUsage {
   language: string;
@@ -18,10 +19,23 @@ interface UserProps {
   name: string;
   totalMinutes: number;
   languages: LanguageUsage[];
+  originalRank? : number
 }
 
 export default function Leaderboard() {
-    const { data, isLoading, error} = useQuery({
+
+  const [searchQuery, setSearchQuery] = useState("");
+  const [debouncedQuery, setDebouncedQuery] = useState("");
+
+  useEffect(()=>{
+    const handler = setTimeout(()=>{
+      setDebouncedQuery(searchQuery);
+    },500)
+    
+    return ()=> clearTimeout(handler);
+  },[searchQuery]);
+
+  const { data, isLoading, error} = useQuery({
     queryKey: ["leaderboard"],
     queryFn: fetchData,
     staleTime: 5 * 60 * 1000,
@@ -51,10 +65,16 @@ export default function Leaderboard() {
 
     )
 
-    if(error)
-      return (
-        <p>Error: {error.message}</p>
-      )
+  if(error)
+    return (
+      <p>Error: {error.message}</p>
+    )
+
+  const filteredData = data?.map((user:UserProps, index:number)=>({
+    ...user,
+    originalRank: index + 1,
+  })).filter((user:UserProps) => user.name.toLowerCase().includes(debouncedQuery));
+  
   return (
     <div className="min-h-screen py-6 px-4 bg-[#0D1B1E] rounded-lg flex flex-col items-center">
       {/* Title with Gradient Effect */}
@@ -69,6 +89,8 @@ export default function Leaderboard() {
           <input
             type="text"
             placeholder="Search name..."
+            value={searchQuery}
+            onChange={(e)=> setSearchQuery(e.target.value.toLowerCase())}
             className="bg-transparent outline-none w-full text-white placeholder-gray-400"
           />
         </div>
@@ -87,15 +109,15 @@ export default function Leaderboard() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {data.map((user:UserProps, key: number) => (
-              <TableRow key={key} className="hover:bg-[#235C4B] transition-all duration-300">
+            {filteredData.map((user:UserProps) => (
+              <TableRow key={user.originalRank} className="hover:bg-[#235C4B] transition-all duration-300">
                 {/* Rank with Crown for 1st Place */}
                 <TableCell>
                   <div className="flex justify-center">
-                    {key === 0 ? (
+                    {user.originalRank === 1 ? (
                       <img src={crown} alt="Crown" className="w-10 h-10 animate-pulse" />
                     ) : (
-                      <span className="text-xl font-semibold">{key + 1}</span>
+                      <span className="text-xl font-semibold">{user.originalRank}</span>
                     )}
                   </div>
                 </TableCell>
@@ -137,17 +159,17 @@ export default function Leaderboard() {
                 {/* Rank Badge with Animated Glow */}
                 <TableCell>
                   <div className="flex items-center gap-2">
-                    {key === 0 ? (
+                    {user.originalRank === 1 ? (
                       <span className="flex items-center gap-1 animate-glow">
                         <img src={legendary} alt="Legendary" className="w-8 h-8" />
                         Legendary
                       </span>
-                    ) : key === 1 ? (
+                    ) : user.originalRank === 2 ? (
                       <span className="flex items-center gap-1 animate-glow">
                         <img src={grandMaster} alt="Grandmaster" className="w-8 h-8" />
                         Grandmaster
                       </span>
-                    ) : key === 2 ? (
+                    ) : user.originalRank === 3 ? (
                       <span className="flex items-center gap-1">
                         <img src={masterCoder} alt="Master Coder" className="w-8 h-8" />
                         Master Coder

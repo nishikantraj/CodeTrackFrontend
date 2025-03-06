@@ -53,13 +53,13 @@ const Header = () => {
         <div className="bg-[#FFF7D6] text-[#2C5E1A] p-2 w-full overflow-hidden whitespace-nowrap relative">
           <div className="animate-marquee inline-block">
             <span className="text-lg font-bold">
-              Important notice: Our backend is currently on a free-tier Render server, which may cause slight delays in API responses. We appreciate your patience as we plan to upgrade to a dedicated server. Support us to keep Codechamp free and improve performance. Thank you❤! Please contact us if you find any inconsistency in your tracked timing.
+              🚀 Important Notice: Our backend is fully operational! However, as we're currently on a free-tier Render server, there may be occasional minor delays in API responses. We're working on upgrading to a dedicated server for even better performance. Your support helps keep Codechamp free and growing! ❤️ If you notice any inconsistencies in your tracked timing, please contact us.
             </span>
           </div>
         </div>
       </div>
 
-      <div className="flex justify-between items-center px-6 py-4 bg-black text-white shadow-md relative">
+      <div className="flex justify-between items-center px-8 py-4 bg-black text-white shadow-md relative">
         <div className="flex items-center space-x-4">
           <button 
             onClick={() => setMenuOpen(!menuOpen)} 
@@ -81,7 +81,7 @@ const Header = () => {
             lg:flex lg:items-center lg:static 
             absolute top-full left-0 w-full 
             bg-black lg:w-auto lg:bg-transparent 
-            transition-all duration-300 
+            transition-all duration-300 pl-22
             ${menuOpen ? 'block' : 'hidden'}
           `}
         >
