@@ -8,8 +8,17 @@ import FAQ from "./pages/FAQ"
 import SigninForm from "./pages/SigninForm"
 import SignupForm from "./pages/SignupForm"
 import Contact from "./pages/Contact"
+import ReactGA from 'react-ga4';
+import { useEffect } from "react"
+
+ReactGA.initialize("G-4D3805M3RW");
 
 function App() {
+
+  useEffect(() => {
+    // Send pageview with the current location's path
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname + window.location.search, title: "Home Page"});
+  }, []);
 
   return (
     <div>
