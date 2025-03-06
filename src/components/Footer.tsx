@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import {  NavLink } from 'react-router-dom';
 import logo from '../assets/image/codechamp.png'
 import { Button } from "./ui/Button"
 
@@ -13,10 +13,18 @@ const Footer = () => {
           </div>
   
           <div className="flex flex-col md:flex-row gap-6 text-sm text-center">
-            <span className="hover:text-green-300 cursor-pointer">Home</span>
-            <span className="hover:text-green-300 cursor-pointer">How it works</span>
-            <span className="hover:text-green-300 cursor-pointer">About us</span>
-            <span className="hover:text-green-300 cursor-pointer">Privacy policy</span>
+            <span className="hover:text-green-300 cursor-pointer">
+              <NavLink to={""}><span className="hover:text-green-300 cursor-pointer">Home</span></NavLink>
+            </span>
+            <span className="hover:text-green-300 cursor-pointer">
+              <NavLink to={"installation"}><span className="hover:text-green-300 cursor-pointer">How it works</span></NavLink>
+            </span>
+            <span className="hover:text-green-300 cursor-pointer">
+              <NavLink to={"about"}><span className="hover:text-green-300 cursor-pointer">About us</span></NavLink>
+            </span>
+            <span className="hover:text-green-300 cursor-pointer">
+              <NavLink to={"privacy"}><span className="hover:text-green-300 cursor-pointer">Privacy policy</span></NavLink>
+            </span>
           </div>
   
           <NavLink to={"/contact"}>
