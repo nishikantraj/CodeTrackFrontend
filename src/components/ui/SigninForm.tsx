@@ -100,10 +100,8 @@ export function Signin({ className, ...props }: React.ComponentProps<"div">) {
       localStorage.setItem("token", token);
       localStorage.setItem("userData",  JSON.stringify(user));
       
-      // setTimeout(() => window.location.href = `/${response.data.user?.userName}`, 2000);
       setTimeout(() => {
         const username = response.data.user?.userName;
-        console.log("Redirecting to:", `/${username}`);
         
         if (username) {
           window.location.href = `/${username}`;
@@ -222,8 +220,8 @@ export function Signin({ className, ...props }: React.ComponentProps<"div">) {
         </CardContent>
       </Card>
       <div className="text-center text-xs text-gray-400 [&_a]:underline [&_a]:text-[#3DDC97] hover:[&_a]:text-[#32c386]">
-        By clicking continue, you agree to our <a href="#">Terms of Service</a>{' '}
-        and <a href="#">Privacy Policy</a>.
+        By clicking continue, you agree to our <Link to="/privacy">Terms of Service</Link>{' '}
+        and <Link to="/privacy">Privacy Policy</Link>.
       </div>
     </div>
   );

@@ -11,6 +11,7 @@ import BASE_API_URL from "@/utils/config";
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import ReactGA from 'react-ga4';
+import { Link } from "react-router-dom";
 
 
 const onToast = () => toast('Coming soon...', {
@@ -67,7 +68,16 @@ export function Signup({ className, ...props }: React.ComponentProps<"div">) {
       localStorage.setItem("token", token);
       localStorage.setItem("userData",  JSON.stringify(user));
       
-      setTimeout(() => window.location.href = "/", 2000);
+      // setTimeout(() => window.location.href = "/", 2000);
+      setTimeout(() => {
+        const username = response.data.user?.userName;
+        
+        if (username) {
+          window.location.href = `/${username}`;
+        } else {
+          toast.error("Invalid user. Try again.");
+        }
+      }, 2000);
 
     } catch (err:any) {
       if (err.response?.status === 400) {
@@ -186,8 +196,8 @@ export function Signup({ className, ...props }: React.ComponentProps<"div">) {
         </CardContent>
       </Card>
       <div className="text-center text-xs text-gray-400 [&_a]:underline [&_a]:text-[#3DDC97] hover:[&_a]:text-[#32c386]">
-        By clicking continue, you agree to our <a href="#">Terms of Service</a>{' '}
-        and <a href="#">Privacy Policy</a>.
+        By clicking continue, you agree to our <Link to="/privacy">Terms of Service</Link>{' '}
+        and <Link to="/privacy">Privacy Policy</Link>.
       </div>
     </div>
   );

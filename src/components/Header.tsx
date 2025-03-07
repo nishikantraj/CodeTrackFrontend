@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "./ui/Dropdown";
 import axios from "axios";
 import BASE_API_URL from "@/utils/config";
-import { Menu, X } from "lucide-react";
+import { Copy, Menu, X } from "lucide-react";
 import SupportUs from "@/pages/Supportus";
 
 const Header = () => {
@@ -133,10 +133,11 @@ const Header = () => {
           {isLoggedIn[0] ? (
             <div className="flex items-center space-x-4">
               <Button 
-                className="bg-green-500 text-black hover:bg-green-600" 
+                className="bg-green-500 text-black hover:bg-green-600 cursor-pointer" 
                 onClick={() => handleCopy(isLoggedIn[1]?.sessionKey || "")}
               >
                 Session Key
+                <span className="pt-1"><Copy/></span>
               </Button>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
