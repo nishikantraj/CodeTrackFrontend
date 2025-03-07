@@ -34,7 +34,7 @@ const Header = () => {
         localStorage.removeItem("userData");
         toast.success("Successfully Logged out");
         setTimeout(() => {
-          window.location.reload();
+          window.location.href = "/";
         }, 1000);
       }
     } catch (error: any) {
