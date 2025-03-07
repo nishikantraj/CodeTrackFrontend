@@ -1,5 +1,5 @@
 
-import { Route, Routes, useLocation } from "react-router-dom"
+import { Navigate, Route, Routes, useLocation } from "react-router-dom"
 import Layout from "./components/Layout"
 import Leaderboard from "./pages/Leaderboard"
 import About from "./pages/About"
@@ -27,6 +27,11 @@ function App() {
     });
   }, [location]);
 
+  const isAuthenticated = ()=>{
+    console.log(location);
+    return !!localStorage.getItem("token");
+  }
+
   return (
     <div>
       <Layout>
@@ -40,6 +45,8 @@ function App() {
           <Route path="/signup" element={<SignupForm/>}/>
           <Route path="/contact" element={<Contact/>}/>
           <Route path="/privacy" element={<PrivacyPolicy/>}/>
+
+          <Route path="/:userName" element={isAuthenticated() ? <Leaderboard/> : < Navigate to={"/"} replace/>}/>
         </Routes>
       </Layout>
     </div>

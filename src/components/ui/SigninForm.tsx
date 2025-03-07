@@ -100,7 +100,18 @@ export function Signin({ className, ...props }: React.ComponentProps<"div">) {
       localStorage.setItem("token", token);
       localStorage.setItem("userData",  JSON.stringify(user));
       
-      setTimeout(() => window.location.href = "/", 2000);
+      // setTimeout(() => window.location.href = `/${response.data.user?.userName}`, 2000);
+      setTimeout(() => {
+        const username = response.data.user?.userName;
+        console.log("Redirecting to:", `/${username}`);
+        
+        if (username) {
+          window.location.href = `/${username}`;
+        } else {
+          toast.error("Invalid user. Try again.");
+        }
+      }, 2000);
+      
       
     } catch (err: any) {
   
