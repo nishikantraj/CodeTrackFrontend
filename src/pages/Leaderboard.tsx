@@ -76,7 +76,7 @@ export default function Leaderboard() {
   })).filter((user:UserProps) => user.name.toLowerCase().includes(debouncedQuery));
   
   return (
-    <div className="min-h-screen py-6 px-4 bg-[#0D1B1E] rounded-lg flex flex-col items-center">
+    <div className="min-h-screen py-6 px-4 bg-[#0D1B1E] rounded-lg flex flex-col items-center mt-20 overflow-auto">
       {/* Title with Gradient Effect */}
       <h1 className="text-5xl font-bold bg-gradient-to-r from-[#A7D7C5] to-[#F4E285] text-transparent bg-clip-text mb-6">
         Codechamp Leaderboard 🏆
