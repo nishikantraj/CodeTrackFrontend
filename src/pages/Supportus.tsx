@@ -6,7 +6,7 @@ const SupportUs = () => {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button className="bg-[#2C5E1A] text-[#FFF7D6] hover:bg-[#3DDC97] cursor-pointer">
+        <Button className="border border-[#60A5FA] text-[#60A5FA] hover:bg-[#60A5FA] hover:text-white cursor-pointer">
           Support Us
         </Button>
       </PopoverTrigger>
