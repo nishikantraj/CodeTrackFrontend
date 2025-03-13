@@ -12,7 +12,7 @@ import ReactGA from 'react-ga4';
 import { useEffect } from "react"
 import ScrollTop from "./components/ScrollTop"
 import PrivacyPolicy from "./pages/PrivacyPolicy"
-import LandingPage from "./pages/LandingPage"
+import Home from "./pages/Home"
 
 ReactGA.initialize("G-4D3805M3RW");
 
@@ -38,7 +38,7 @@ function App() {
       <Layout>
         <ScrollTop/>
         <Routes>
-          <Route path="/" element={<LandingPage/>}/>
+          <Route path="/" element={<Home/>}/>
           <Route path="/leaderboard" element={<Leaderboard/>}/>
           <Route path="/about" element={<About/>}/>
           <Route path="/installation" element={<Installation/>}/>
