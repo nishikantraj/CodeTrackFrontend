@@ -46,9 +46,13 @@ const Header = () => {
     setMenuOpen(false);
   };
 
+  const scrollToLeaderboard = () => {
+    window.dispatchEvent(new Event("scrollToLeaderboard"));
+  };
+
   return (
     <div className="fixed w-full z-50">
-      <div className="flex justify-between items-center px-6 md:px-15 py-4 bg-[#171717] text-white shadow-md relative">
+      <div className="flex justify-between items-center px-6 md:px-15 py-6 bg-[#171717] text-white shadow-md relative">
         <div className="flex items-center space-x-4">
           <button 
             onClick={() => setMenuOpen(!menuOpen)} 
@@ -79,7 +83,10 @@ const Header = () => {
               <NavLink 
                 to={""} 
                 className={({ isActive }) => (isActive ? "text-[#5DA0F1]" : "hover:text-[#5DA0F1]")}
-                onClick={closeMobileMenu}
+                onClick={() => {
+                  closeMobileMenu()
+                  window.scrollTo({ top: 0, behavior: "smooth" })
+                }}
               >
                 Home
               </NavLink>
@@ -87,7 +94,10 @@ const Header = () => {
             <li>
               <NavLink 
                 to={""}
-                onClick={closeMobileMenu}
+                onClick={()=>{
+                  closeMobileMenu()
+                  scrollToLeaderboard()
+                }}
               >
                 Leaderboard
               </NavLink>

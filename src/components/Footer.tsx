@@ -4,7 +4,7 @@ import { Button } from "./ui/Button"
 
 const Footer = () => {
     return (
-      <div className="bg-black text-white px-6 py-6 mt-10 border-t border-gray-700">
+      <div className="bg-black text-white px-6 py-6 border-t border-gray-700">
         <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
           <div className="mb-6 md:mb-0 flex flex-col items-center">
             <img src={logo} alt="CodeTracker" className="cursor-pointer w-32 brightness-125 contrast-110 mx-auto md:mx-0" />

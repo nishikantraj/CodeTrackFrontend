@@ -20,7 +20,8 @@ const LandingPage = () => {
       return () => typed.destroy();
     }, []);
   return (
-    <div className="min-h-screen w-full py-8 mt-20 overflow-hidden text-white px-4 md:px-6 lg:px-8">
+    <div className="bg-[#242424] bg-[radial-gradient(circle,_rgba(36,36,36,1)_0%,_rgba(24,24,24,1)_100%)] pl-6">
+      <div className="min-h-screen w-full py-8 mt-20 overflow-hidden text-white px-4 md:px-6 lg:px-8">
       {/* Top card */}
       <div className="flex flex-wrap flex-col lg:flex-row items-center md:items-center lg:justify-center lg:items-center">
         {/* Left Section */}
@@ -175,6 +176,7 @@ const LandingPage = () => {
           <h1 className="text-4xl font-bold">99%</h1>
           <p className="text-white/50">Accuracy Rate</p>
         </div>
+      </div>
       </div>
     </div>
   );

@@ -9,6 +9,8 @@ import languages from "@/utils/language";
 import { useQuery } from "@tanstack/react-query";
 import fetchData from "@/utils/fetchData";
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/Button";
+import toast from "react-hot-toast";
 // import data from '../utils/dummyData'
 interface LanguageUsage {
   language: string;
@@ -22,6 +24,22 @@ interface UserProps {
   originalRank? : number
 }
 
+const onToast = () => toast('Coming soon...', {
+  icon: "⏳",
+  style: {
+    backgroundColor: "#161B22",
+    color: "#60A5FA",
+    border: "1px solid #60A5FA",
+    padding: "12px 16px",
+    borderRadius: "8px",
+    fontSize: "14px",
+    fontWeight: "500",
+    display: "flex",
+    alignItems: "center",
+    gap: "8px",
+    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
+  }
+});
 export default function Leaderboard() {
 
   const [searchQuery, setSearchQuery] = useState("");
@@ -76,31 +94,46 @@ export default function Leaderboard() {
   })).filter((user:UserProps) => user.name.toLowerCase().includes(debouncedQuery));
   
   return (
-    <div className="min-h-screen py-6 px-4 bg-[#0D1B1E] rounded-lg flex flex-col items-center mt-20 overflow-auto">
-      {/* Title with Gradient Effect */}
-      <h1 className="text-5xl font-bold bg-gradient-to-r from-[#A7D7C5] to-[#F4E285] text-transparent bg-clip-text mb-6">
-        Codechamp Leaderboard 🏆
-      </h1>
+    <div className="min-h-screen text-white py-6 bg-[#171717] flex flex-col items-center overflow-auto">
+      {/* Title with description */}
+      <div className="flex flex-col justify-center items-center px-4 md:px-6">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-clip-text mb-4 md:mb-6 text-center">
+          Global Coding Leaderboard
+        </h1>
+        <p className="text-center w-full md:w-2/3 tracking-tight text-sm sm:text-md text-wrap text-[#D1D5DB] px-2">
+          Track your progress against the best coders worldwide. Rankings are updated in real-time based on coding duration and consistency.
+        </p>
+      </div>
 
-      {/* Search Bar */}
-      <div className="w-full max-w-3xl mb-4">
-        <div className="flex items-center gap-2 bg-[#142B2E] px-3 py-2 rounded-lg shadow-md">
-          <Search className="text-gray-300 w-5 h-5" />
-          <input
-            type="text"
-            placeholder="Search name..."
-            value={searchQuery}
-            onChange={(e)=> setSearchQuery(e.target.value.toLowerCase())}
-            className="bg-transparent outline-none w-full text-white placeholder-gray-400"
-          />
+      {/*Button and Search Bar */}
+      <div className="w-full mt-6 md:mt-8 mb-4 flex flex-col sm:flex-row justify-between px-4 sm:px-8 md:px-14 gap-4">
+
+        <div className="order-1 sm:order-2 flex justify-center items-center gap-2 sm:gap-3 flex-wrap">
+          <Button className="hover:bg-[#1C4ED8] bg-[#2c5de6] cursor-pointer py-2 md:py-6 text-xs sm:text-sm px-2 sm:px-4">Last 24 Hour</Button>
+          <Button className="bg-[#262626] border-white/20 border cursor-pointer hover:bg-[#404040] py-2 md:py-6 text-xs sm:text-sm px-2 sm:px-4" onClick={onToast}>This Month</Button>
+          <Button className="bg-[#262626] border-white/20 border cursor-pointer hover:bg-[#404040] py-2 md:py-6 text-xs sm:text-sm px-2 sm:px-4" onClick={onToast}>This Week</Button>
         </div>
+
+        <div className="order-2 sm:order-2">
+          <div className="flex items-center gap-2 bg-[#262626] px-3 py-2 rounded-lg shadow-md border-2 border-transparent focus-within:border-[#3C82F6] w-full">
+            <input
+              type="text"
+              placeholder="Search users..."
+              value={searchQuery}
+              onChange={(e)=> setSearchQuery(e.target.value.toLowerCase())}
+              className="bg-transparent outline-none w-full text-white placeholder-gray-400"
+            />
+            <Search className="text-gray-300 w-5 h-5" />
+          </div>
+        </div>
+
       </div>
 
       {/* Leaderboard Table */}
-      <div className="w-full max-w-5xl bg-[#1B4332] p-6 rounded-lg shadow-2xl backdrop-blur-lg">
+      <div className="w-full mt-3 max-w-[82rem] bg-[#262626] p-6 rounded-lg shadow-2xl backdrop-blur-lg">
         <Table>
           <TableHeader>
-            <TableRow className="bg-[#102A26]">
+            <TableRow className="bg-[#404040]">
               <TableHead className="text-center w-[80px]">Rank</TableHead>
               <TableHead className="w-[220px]">Coder</TableHead>
               <TableHead className="w-[150px]">Duration</TableHead>
@@ -110,7 +143,7 @@ export default function Leaderboard() {
           </TableHeader>
           <TableBody>
             {filteredData.map((user:UserProps) => (
-              <TableRow key={user.originalRank} className="hover:bg-[#235C4B] transition-all duration-300">
+              <TableRow key={user.originalRank} className="hover:bg-[#708ccc] transition-all duration-300">
                 {/* Rank with Crown for 1st Place */}
                 <TableCell>
                   <div className="flex justify-center">
