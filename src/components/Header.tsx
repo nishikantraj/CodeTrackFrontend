@@ -49,6 +49,9 @@ const Header = () => {
   const scrollToLeaderboard = () => {
     window.dispatchEvent(new Event("scrollToLeaderboard"));
   };
+  const scrollToFeature = () => {
+    window.dispatchEvent(new Event("scrollToFeature"));
+  };
 
   return (
     <div className="fixed w-full z-50">
@@ -82,7 +85,6 @@ const Header = () => {
           <li>
               <NavLink 
                 to={""} 
-                className={({ isActive }) => (isActive ? "text-[#5DA0F1]" : "hover:text-[#5DA0F1]")}
                 onClick={() => {
                   closeMobileMenu()
                   window.scrollTo({ top: 0, behavior: "smooth" })
@@ -105,17 +107,12 @@ const Header = () => {
             <li>
               <NavLink 
                 to={""}
-                onClick={closeMobileMenu}
+                onClick={()=>{
+                  closeMobileMenu()
+                  scrollToFeature()
+                }}
               >
                 Features
-              </NavLink>
-            </li>
-            <li>
-              <NavLink 
-                to={""}
-                onClick={closeMobileMenu}
-              >
-                Ranking
               </NavLink>
             </li>
             <li>

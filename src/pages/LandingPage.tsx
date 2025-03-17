@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/Button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/Card";
 import { ChevronRight } from "lucide-react";
 import { useEffect, useRef } from "react";
+import { NavLink } from "react-router-dom";
 import Typed from "typed.js";
 
 const LandingPage = () => {
@@ -19,6 +20,10 @@ const LandingPage = () => {
   
       return () => typed.destroy();
     }, []);
+
+    const scrollToLeaderboard = () => {
+      window.dispatchEvent(new Event("scrollToLeaderboard"));
+    };
   return (
     <div className="bg-[#242424] bg-[radial-gradient(circle,_rgba(36,36,36,1)_0%,_rgba(24,24,24,1)_100%)] pl-6">
       <div className="min-h-screen w-full py-8 mt-20 overflow-hidden text-white px-4 md:px-6 lg:px-8">
@@ -37,12 +42,24 @@ const LandingPage = () => {
           </p>
 
           <div className="mt-5 flex flex-col sm:flex-row gap-3 items-center sm:items-start md:items-start md:justify-start justify-center w-full">
-            <Button className="w-full sm:w-auto text-white cursor-pointer font-bold bg-[#3868e9] hover:bg-[#1C4ED8] px-6 md:px-9 py-3 md:py-4 lg:py-6 hover:-translate-y-0.5 transition duration-300">
-              View Leaderboard
-            </Button>
-            <Button className="w-full sm:w-auto text-white cursor-pointer font-bold hover:bg-[#FFFFFF] border border-white hover:text-[#1C4ED8] px-6 md:px-9 py-3 md:py-4 lg:py-6 hover:-translate-y-0.5 transition duration-300">
-              Get Started
-            </Button>
+            <NavLink
+              to={""}
+              onClick={scrollToLeaderboard}
+            >
+              <Button
+              className="w-full sm:w-auto text-white cursor-pointer font-bold bg-[#3868e9] hover:bg-[#1C4ED8] px-6 md:px-9 py-3 md:py-4 lg:py-6 hover:-translate-y-0.5 transition duration-300">
+                View Leaderboard
+              </Button>
+            </NavLink>
+
+            <NavLink
+              to={"/signup"}
+            >
+              <Button
+              className="w-full sm:w-auto text-white cursor-pointer font-bold hover:bg-[#FFFFFF] border border-white hover:text-[#1C4ED8] px-6 md:px-9 py-3 md:py-4 lg:py-6 hover:-translate-y-0.5 transition duration-300">
+                Get Started
+              </Button>
+            </NavLink>
           </div>
 
           <div className="flex mt-6 md:mt-8 flex-col sm:flex-row text-center sm:text-left items-center sm:items-center md:items-center md:justify-start justify-center w-full lg:items-center">
@@ -147,7 +164,12 @@ const LandingPage = () => {
 
           <CardFooter className="flex justify-center items-center px-3 sm:px-6 pb-3 sm:pb-4">
             <div className="flex items-center border-t border-t-white/30 text-[#4698f0] pt-2 sm:pt-2.5 w-full justify-center hover:text-[#92C5FD] cursor-pointer text-xs sm:text-sm">
-              <p>See Full Leaderboard</p>
+              <NavLink
+                to={""}
+                onClick={scrollToLeaderboard}
+              >
+                <p>See Full Leaderboard</p>
+              </NavLink>
               <ChevronRight className="h-[12px] w-[12px] sm:h-[15px] sm:w-[15px]" />
             </div>
           </CardFooter>

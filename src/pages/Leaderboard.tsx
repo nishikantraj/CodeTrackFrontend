@@ -65,13 +65,13 @@ export default function Leaderboard() {
 
   if(isLoading)
     return (
-      <div className="flex justify-center items-center py-10 min-h-screen">
-        <div className="flex flex-col items-center space-y-4 bg-[#1B4332] bg-opacity-60 backdrop-blur-lg p-6 rounded-xl shadow-lg">
+      <div className="flex justify-center items-center py-10 min-h-screen bg-[#171717]">
+        <div className="flex flex-col items-center space-y-4 bg-[#2683e0] bg-opacity-60 backdrop-blur-lg p-6 rounded-xl shadow-lg">
           {/* Pulsing Crown Icon (For 1st Place) */}
-          <div className="w-14 h-14 bg-gradient-to-r from-[#A7D7C5] to-[#F4E285] rounded-full animate-pulse"></div>
+          <div className="w-14 h-14 bg-gradient-to-r from-[#6095be] to-[#ead163] rounded-full animate-pulse"></div>
 
           {/* Loading Text */}
-          <p className="text-xl font-semibold text-[#A7D7C5] animate-fadeIn">Fetching Data...</p>
+          <p className="text-xl font-semibold text-[#d0d8d5] animate-fadeIn">Fetching Data...</p>
 
           {/* Skeleton Bars with Shimmer Animation */}
           <div className="space-y-3 w-72">
@@ -100,7 +100,7 @@ export default function Leaderboard() {
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-clip-text mb-4 md:mb-6 text-center">
           Global Coding Leaderboard
         </h1>
-        <p className="text-center w-full md:w-2/3 tracking-tight text-sm sm:text-md text-wrap text-[#D1D5DB] px-2">
+        <p className="text-center w-full md:w-2/3 tracking-tight text-md sm:text-md text-wrap text-[#D1D5DB] px-2">
           Track your progress against the best coders worldwide. Rankings are updated in real-time based on coding duration and consistency.
         </p>
       </div>
@@ -174,15 +174,21 @@ export default function Leaderboard() {
                       return (
                         <div
                           key={language}
-                          className="rounded-full px-3 py-1 flex items-center gap-1 flex-shrink-0 min-w-max bg-opacity-80 border border-black"
-                          style={{ backgroundColor: langItem?.color }}
+                          className="flex items-center"
                         >
                           {langItem ? (
-                            <img src={langItem.image} alt={language} className="w-[30px] h-[30px] object-contain" />
+                            <div className="rounded-full px-3 py-1 flex items-center gap-1 flex-shrink-0 min-w-max bg-opacity-80 border border-black"
+                            style={{ backgroundColor: langItem?.color }}>
+                              <img src={langItem.image} alt={language} className="w-[30px] h-[30px] object-contain" />
+                              <span className="text-[#000000] font-semibold">{Number(minutes).toFixed(2)}</span>
+                            </div>  
                           ) : (
-                            language
+                            <div className="rounded-full px-3 py-1 flex items-center gap-1 flex-shrink-0 min-w-max bg-opacity-80 border border-[#aa9090]">
+                              <span className="textwhite">{language}</span>
+                              <span className="text-[#f9f8f8] font-semibold">{Number(minutes).toFixed(2)}</span>
+                            </div>
                           )}
-                          <span className="text-black font-semibold">{Number(minutes).toFixed(2)}</span>
+                          
                         </div>
                       );
                     })}
