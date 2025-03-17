@@ -1,52 +1,168 @@
-import {  NavLink } from 'react-router-dom';
-import logo from '../assets/image/codechamp.png'
-import { Button } from "./ui/Button"
+import { ChevronUp, Github, Linkedin, Twitter } from "lucide-react";
+import { Button } from "./ui/Button";
+import { Link, NavLink } from "react-router-dom";
 
 const Footer = () => {
-    return (
-      <div className="bg-black text-white px-6 py-6 border-t border-gray-700">
-        <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
-          <div className="mb-6 md:mb-0 flex flex-col items-center">
-            <img src={logo} alt="CodeTracker" className="cursor-pointer w-32 brightness-125 contrast-110 mx-auto md:mx-0" />
+  const scrollToLeaderboard = () => {
+    window.dispatchEvent(new Event("scrollToLeaderboard"));
+  };
+  const scrollToFeature = () => {
+    window.dispatchEvent(new Event("scrollToFeature"));
+  };
 
-            <p className="text-xs mb-5 pl-2">Copyright © 2025</p>
+  return (
+    <div className="px-6 md:px-14 bg-gradient-to-b from-[#252525] via-[#0c0c0c] to-[#151414] text-white py-6">
+      <div className="flex flex-col lg:flex-row gap-8">
+        {/* About */}
+        <div className="lg:w-1/3 flex flex-col gap-4">
+          <div className="flex gap-2 items-center">
+            <h1 className="text-2xl tracking-tight font-bold">CodeChamp</h1>
+            <span className="bg-[#2463EB] px-1.5 rounded-3xl text-center text-xs">Beta</span>
           </div>
-  
-          <div className="flex flex-col md:flex-row gap-6 text-sm text-center">
-            <span className="hover:text-green-300 cursor-pointer">
-              <NavLink to={""}><span className="hover:text-green-300 cursor-pointer">Home</span></NavLink>
-            </span>
-            <span className="hover:text-green-300 cursor-pointer">
-              <NavLink to={"installation"}><span className="hover:text-green-300 cursor-pointer">How it works</span></NavLink>
-            </span>
-            <span className="hover:text-green-300 cursor-pointer">
-              <NavLink to={"about"}><span className="hover:text-green-300 cursor-pointer">About us</span></NavLink>
-            </span>
-            <span className="hover:text-green-300 cursor-pointer">
-              <NavLink to={"privacy"}><span className="hover:text-green-300 cursor-pointer">Privacy policy</span></NavLink>
-            </span>
+          <p className="text-[#9CA3AF]">
+            Track your coding time, compete with peers, and showcase your dedication with our global leaderboard system. Join thousands of developers improving their skills through friendly competition.
+          </p>
+          <div className="flex gap-4">
+            <a href="https://github.com/nishikantraj" target="_blank">
+              <Github className="text-[#9CA3AF] hover:text-white cursor-pointer" />
+            </a>
+            <a href="https://www.linkedin.com/in/nishikant6969/" target="_blank">
+              <Linkedin className="text-[#9CA3AF] hover:text-white cursor-pointer" />
+            </a>
+            <a href="https://x.com/CherryNishikant" target="_blank">
+              <Twitter className="text-[#9CA3AF] hover:text-white cursor-pointer" />
+            </a>
           </div>
-  
-          <NavLink to={"/contact"}>
-            <Button className="bg-yellow-400 text-black hover:bg-yellow-500 cursor-pointer mt-4 md:mt-0">Contact us</Button>
-          </NavLink>
         </div>
-  
-        <div className="border-t border-gray-700 mt-6 pt-4 flex justify-center gap-6">
-          <a href="https://x.com/CherryNishikant" target='_blank'>
-            <svg className="w-6 h-6 text-blue-400 cursor-pointer hover:text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" /></svg>
-          </a>
 
-          <a href="https://github.com/nishikantraj" target='_blank'>
-            <svg className="w-6 h-6 text-white cursor-pointer hover:text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" /><path d="M9 18c-4.51 2-5-2-7-2" /></svg>
-          </a>
+        {/* Quick nav */}
+        <div className="flex flex-wrap sm:flex-nowrap justify-between lg:w-2/3 gap-6">
+          {/* Quick Links */}
+          <div>
+            <h1 className="text-lg font-semibold">Quick Links</h1>
+            <ul className="text-[#9CA3AF] flex flex-col gap-2 py-5">
+              <NavLink
+                to={""}
+                onClick={scrollToLeaderboard}
+              >
+                <li className="cursor-pointer hover:text-white">Leaderboard</li>
+              </NavLink>
 
-          <a href="https://www.linkedin.com/in/nishikant6969/" target='_blank'>
-            <svg className="w-6 h-6 text-blue-500 cursor-pointer hover:text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect width="4" height="12" x="2" y="9" /><circle cx="4" cy="4" r="2" /></svg>
-          </a>
+              <NavLink
+                to={""}
+                onClick={scrollToFeature}
+              >
+                <li className="cursor-pointer hover:text-white">Features</li>
+              </NavLink>
+
+              <NavLink
+                to={"/about"}
+              >
+                <li className="cursor-pointer hover:text-white">About Us</li>
+              </NavLink>
+              
+              <NavLink
+                to={"/installation"}
+              >
+                <li className="cursor-pointer hover:text-white">Installation</li>
+              </NavLink>
+              
+              <NavLink
+                to={"/faq"}
+              >
+                <li className="cursor-pointer hover:text-white">FAQs</li>
+              </NavLink>
+              
+            </ul>
+          </div>
+          
+          {/* Resources */}
+          <div>
+            <h1 className="text-lg font-semibold">Resources</h1>
+            <ul className="text-[#9CA3AF] flex flex-col gap-2 py-5">
+              {/* <li className="cursor-pointer hover:text-white">Documentation</li> */}
+              <NavLink
+                to={"/contact"}
+              >
+                <li className="cursor-pointer hover:text-white">Support</li>
+              </NavLink>
+            </ul>
+          </div>
+          
+          {/* Stay updated */}
+          <div>
+            <h1 className="text-lg font-semibold">Stay Updated</h1>
+            <p className="w-full sm:w-52 text-[#9CA3AF]">Subscribe to our newsletter for the latest updates and features.</p>
+            <form 
+              onSubmit={(e)=>e.preventDefault()}
+            className="flex flex-col gap-2 mt-2">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="bg-white p-2 text-black rounded-lg border-2 focus:border-[#2463EB] focus:outline-none w-full"
+              />
+              <Button className="cursor-pointer bg-[#2463EB] hover:bg-[#1C4ED8] py-3 text-lg font-medium">Subscribe</Button>
+            </form>
+          </div>
         </div>
       </div>
-    );
-  };
-  
-  export default Footer;
+
+      {/* User Testimony */}
+      <div className="border-t border-[#494848] border-b mt-12 flex flex-col gap-5 justify-center items-center pt-4 text-center">
+        <div className="flex flex-col justify-center items-center gap-3">
+          <h1 className="text-xl font-bold">What Our Users Say</h1>
+          <span>⭐⭐⭐⭐⭐</span>
+        </div>
+        <p className="text-[#D1D5DB] w-full sm:w-2/3 italic text-lg">
+          "CodeChamp has completely transformed my coding habits. Being able to track my time across different languages and seeing my rank improve has been incredibly motivating. The leaderboard creates a sense of friendly competition that pushes me to be more consistent with my coding practice."
+        </p>
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pb-4">
+          <div className="bg-gradient-to-r from-[#6d97db] via-[#224cc9] to-[#0f19aa] p-3 rounded-full font-bold">AD</div>
+          <div>
+            <h3 className="font-bold">Adarsh Patel</h3>
+            <div className="flex text-sm text-[#D1D5DB] gap-1">
+              <p>SDE</p>
+              <p>&#8226;</p>
+              <p>Morphic</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* copyright */}
+      <div className="flex flex-col sm:flex-row text-sm justify-between pt-6 text-center sm:text-left">
+        <p className="text-[#9CA3AF]">© 2023 CodeChamp. All rights reserved.</p>
+        
+        <ul className="text-[#9CA3AF] flex flex-col sm:flex-row gap-3 sm:gap-6 mt-4 sm:mt-0">
+          <NavLink
+            to={"/privacy"}
+          >
+            <li className="cursor-pointer hover:text-white">Privacy Policy</li>
+          </NavLink>
+
+          <NavLink
+            to={"/contact"}
+          >
+            <li className="cursor-pointer hover:text-white">Contact Us</li>
+          </NavLink>
+
+        </ul>
+      </div>
+
+      <div className="w-full flex justify-center py-3">
+        <div className="bg-[#2d2a2a] p-1 rounded-full w-8 h-8 flex justify-center items-center hover:bg-[#404040]">
+          <Link
+            to={""} 
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: "smooth" })
+            }}
+          >
+            <ChevronUp/>
+          </Link>
+        </div>
+        </div>
+    </div>
+  );
+};
+
+export default Footer;
