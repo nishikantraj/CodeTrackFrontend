@@ -4,6 +4,9 @@
 .root{
   font-family: sans-serif;
 }
+body{
+  background-color: #171717;
+}
 .custom-scrollbar::-webkit-scrollbar {
     display: none; /* Hides scrollbar in WebKit browsers */
 }
