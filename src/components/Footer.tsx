@@ -11,7 +11,7 @@ const Footer = () => {
   };
 
   return (
-    <div className="px-6 md:px-14 bg-gradient-to-b from-[#252525] via-[#0c0c0c] to-[#151414] text-white py-6">
+    <div className="px-6 md:px-18 bg-gradient-to-b from-[#252525] via-[#0c0c0c] to-[#151414] text-white py-6">
       <div className="flex flex-col lg:flex-row gap-8">
         {/* About */}
         <div className="lg:w-1/3 flex flex-col gap-4">

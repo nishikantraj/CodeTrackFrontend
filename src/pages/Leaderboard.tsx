@@ -106,7 +106,7 @@ export default function Leaderboard() {
       </div>
 
       {/*Button and Search Bar */}
-      <div className="w-full mt-6 md:mt-8 mb-4 flex flex-col sm:flex-row justify-between px-4 sm:px-8 md:px-14 gap-4">
+      <div className="w-full mt-6 md:mt-8 mb-4 flex flex-col sm:flex-row justify-between px-4 sm:px-8 md:px-18 gap-4">
 
         <div className="order-1 sm:order-2 flex justify-center items-center gap-2 sm:gap-3 flex-wrap">
           <Button className="hover:bg-[#1C4ED8] bg-[#2c5de6] cursor-pointer py-2 md:py-6 text-xs sm:text-sm px-2 sm:px-4">Last 24 Hour</Button>
@@ -130,7 +130,7 @@ export default function Leaderboard() {
       </div>
 
       {/* Leaderboard Table */}
-      <div className="w-full mt-3 max-w-[82rem] bg-[#262626] p-6 rounded-lg shadow-2xl backdrop-blur-lg">
+      <div className="w-full mt-3 max-w-[80rem] bg-[#262626] p-6 rounded-lg shadow-2xl backdrop-blur-lg">
         <Table>
           <TableHeader>
             <TableRow className="bg-[#404040]">
