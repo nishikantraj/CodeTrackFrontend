@@ -94,7 +94,7 @@ export default function Leaderboard() {
   })).filter((user:UserProps) => user.name.toLowerCase().includes(debouncedQuery));
   
   return (
-    <div className="min-h-screen text-white py-6 bg-[#171717] flex flex-col items-center overflow-auto">
+    <div className="min-h-screen text-white py-6 bg-[#171717] flex flex-col items-center overflow-auto pt-[130px]">
       {/* Title with description */}
       <div className="flex flex-col justify-center items-center px-4 md:px-6">
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-clip-text mb-4 md:mb-6 text-center">
