@@ -1,9 +1,12 @@
 import { Button } from "@/components/ui/Button";
+import { useAuth } from "@/hooks/useAuth";
 import { useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import Typed from "typed.js";
 
 export default function Installation() {
+  const isLoggedIn = useAuth();
+  
   const typedRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
@@ -41,13 +44,17 @@ export default function Installation() {
                 <h3 className="text-xl font-semibold text-center px-4">Sign Up & Get Your Session Key</h3>
                 <p className="text-center w-4/5 text-[#D1D5DB]">Visit Codechamp and create an account. A unique session key will be generated for you to link your VS Code activity.</p>
                 <div className="flex justify-center">
-                  <NavLink
-                    to={"/signup"}
-                  >
-                    <Button className="text-white cursor-pointer bg-[#3868e9] hover:bg-[#1C4ED8] text-sm">
-                      Sign Up Now
-                    </Button>
-                  </NavLink>
+                  {isLoggedIn[0]? (
+                    <div></div>
+                  ):(
+                    <NavLink
+                      to={"/signup"}
+                    >
+                      <Button className="text-white cursor-pointer bg-[#3868e9] hover:bg-[#1C4ED8] text-sm">
+                        Sign Up Now
+                      </Button>
+                    </NavLink>
+                  )}
                 </div>
               </div>  
             </div>
@@ -106,11 +113,24 @@ export default function Installation() {
         <div className="bg-gradient-to-r from-[#1D4DD7] via-[#2C3FBC] to-[#3631A4] flex flex-col justify-center items-center gap-6 py-12 px-4 rounded-xl">
           <h3 className="text-3xl font-bold text-center">Ready to Start Your Coding Journey?</h3>
           <p className="text-[#D1D5DB] text-lg text-center">Join thousands of developers tracking their progress and improving their skills with CodeChamp.</p>
-          <NavLink
-            to={"/signup"}
-          >
-            <Button className="cursor-pointer bg-[#FFFFFF] hover:bg-[#EFF6FF] text-[#2463EB] text-lg py-6">Create Free Account</Button>
-          </NavLink>
+          {isLoggedIn[0] ? (
+            <div className="flex justify-center">
+              <a
+                href="https://marketplace.visualstudio.com/items?itemName=Nishikant.codetrackerextension"
+                target="_blank"
+              >
+                <Button className="cursor-pointer bg-[#FFFFFF] hover:bg-[#EFF6FF] text-[#2463EB] text-lg py-6">
+                  Download Extension
+                </Button>
+              </a>
+            </div>
+          ) : (
+            <NavLink
+              to={"/signup"}
+            >
+              <Button className="cursor-pointer bg-[#FFFFFF] hover:bg-[#EFF6FF] text-[#2463EB] text-lg py-6">Create Free Account</Button>
+            </NavLink>
+          )}
         </div>
 
       </div>

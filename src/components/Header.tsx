@@ -153,7 +153,7 @@ const Header = () => {
           {isLoggedIn[0] ? (
             <div className="flex items-center space-x-4">
               <Button 
-                className="bg-green-500 text-black hover:bg-green-600 cursor-pointer" 
+                className="bg-blue-400 hover:bg-blue-600 cursor-pointer" 
                 onClick={() => handleCopy(isLoggedIn[1]?.sessionKey || "")}
               >
                 Session Key
@@ -164,12 +164,12 @@ const Header = () => {
                   <img 
                     src={profile} 
                     alt={isLoggedIn[1]?.name} 
-                    className="w-9 h-9 rounded-full border-2 border-[#3DDC97] cursor-pointer"
+                    className="w-9 h-9 rounded-full border-2 border-[#3d6adc] cursor-pointer"
                   />
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-56 bg-[#0D1117] border border-[#3DDC97] text-white shadow-lg rounded-lg">
-                  <DropdownMenuLabel className="text-[#3DDC97] font-semibold">My Account</DropdownMenuLabel>
-                  <DropdownMenuSeparator className="border-[#3DDC97]" />
+                <DropdownMenuContent className="w-56 bg-[#0D1117] border border-[#3d77dc] text-white shadow-lg rounded-lg">
+                  <DropdownMenuLabel className="text-[#538bd8] font-semibold">My Account</DropdownMenuLabel>
+                  <DropdownMenuSeparator className="border-[#3dcadc]" />
                   <DropdownMenuGroup>
                     <DropdownMenuItem className="hover:bg-[#161B22]">Profile</DropdownMenuItem>
                     <DropdownMenuItem className="hover:bg-[#161B22]">Settings</DropdownMenuItem>

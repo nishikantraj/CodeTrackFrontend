@@ -44,13 +44,13 @@ export default function Contact() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-dark-green p-6">
-      <Card className="w-full max-w-lg p-8 bg-mint-green shadow-xl rounded-2xl border border-soft-yellow">
+    <div className="text-white flex flex-col items-center justify-center min-h-screen py-40">
+      <Card className="w-full max-w-lg p-8 shadow-xl rounded-2xl border border-blue-300">
         <CardContent>
-          <h2 className="text-3xl font-bold text-dark-green text-center mb-6">Get in Touch</h2>
+          <h2 className="text-3xl font-bold text-center mb-6">Get in Touch</h2>
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label className="block text-dark-green font-medium mb-2">Name</label>
+              <label className="block font-medium mb-2">Name</label>
               <Input
                 type="text"
                 name="name"
@@ -58,11 +58,11 @@ export default function Contact() {
                 placeholder="Enter your name"
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full p-3 text-black rounded-lg border border-soft-yellow bg-white focus:ring-2 focus:ring-yellow-500"
+                className="w-full p-3 text-black rounded-lg bg-white focus:ring-2 focus:ring-blue-500"
               />
             </div>
             <div>
-              <label className="block text-dark-green font-medium mb-2">Email</label>
+              <label className="block font-medium mb-2">Email</label>
               <Input
                 type="email"
                 name="email"
@@ -70,22 +70,22 @@ export default function Contact() {
                 placeholder="Enter your email"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full p-3 text-black rounded-lg border border-soft-yellow bg-white focus:ring-2 focus:ring-yellow-500"
+                className="w-full p-3 text-black rounded-lg bg-white focus:ring-2 focus:ring-blue-500"
               />
             </div>
             <div>
-              <label className="block text-dark-green font-medium mb-2">Message</label>
+              <label className="block font-medium mb-2">Message</label>
               <Textarea
                 name="message"
                 required
                 placeholder="Write your message here..."
                 value={formData.message}
                 onChange={handleChange}
-                className="w-full p-3 text-black rounded-lg border border-soft-yellow bg-white focus:ring-2 focus:ring-yellow-500"
+                className="w-full p-3 text-black rounded-lg bg-white focus:ring-2 focus:ring-blue-500"
                 rows={4}
               />
             </div>
-            <Button type="submit" className="w-full p-3 bg-soft-yellow cursor-pointer text-dark-green font-semibold rounded-lg hover:bg-yellow-400 transition-all" disabled={loading}>
+            <Button type="submit" className="w-full p-3 cursor-pointer font-semibold rounded-lg bg-blue-400 hover:bg-blue-500 transition-all" disabled={loading}>
               {loading ? "Sending..." : "Send Message"}
             </Button>
           </form>

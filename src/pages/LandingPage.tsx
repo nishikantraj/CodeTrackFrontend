@@ -1,11 +1,16 @@
 import { Button } from "@/components/ui/Button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/Card";
+import { useAuth } from "@/hooks/useAuth";
+import fetchData from "@/utils/fetchData";
+import { useQuery } from "@tanstack/react-query";
 import { ChevronRight } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import Typed from "typed.js";
 
 const LandingPage = () => {
+  const isLoggedIn = useAuth();
+  
   const typedRef = useRef<HTMLSpanElement>(null);
   useEffect(() => {
       const typed = new Typed(typedRef.current, {
@@ -24,6 +29,19 @@ const LandingPage = () => {
     const scrollToLeaderboard = () => {
       window.dispatchEvent(new Event("scrollToLeaderboard"));
     };
+
+    // data fetching
+    const { data, isLoading} = useQuery({
+      queryKey: ["leader"],
+      queryFn: fetchData,
+      staleTime: 5 * 60 * 1000,
+      gcTime: 10 * 60 * 1000,
+      refetchInterval: 5 * 60 * 1000,
+      refetchOnWindowFocus: true,
+    });
+    const topCoders = Array.isArray(data) ? data.slice(0, 3) : [];
+    console.log(topCoders);
+    
   return (
     <div className="bg-[#242424] bg-[radial-gradient(circle,_rgba(36,36,36,1)_0%,_rgba(24,24,24,1)_100%)] pl-6">
       <div className="min-h-screen w-full py-8 mt-20 overflow-hidden text-white px-4 md:px-6 lg:px-8">
@@ -52,14 +70,18 @@ const LandingPage = () => {
               </Button>
             </NavLink>
 
-            <NavLink
-              to={"/signup"}
-            >
-              <Button
-              className="w-full sm:w-auto text-white cursor-pointer font-bold hover:bg-[#FFFFFF] border border-white hover:text-[#1C4ED8] px-6 md:px-9 py-3 md:py-4 lg:py-6 hover:-translate-y-0.5 transition duration-300">
-                Get Started
-              </Button>
-            </NavLink>
+            {isLoggedIn[0]?(
+              <div></div>
+            ):(
+              <NavLink
+                to={"/signup"}
+              >
+                <Button
+                className="w-full sm:w-auto text-white cursor-pointer font-bold hover:bg-[#FFFFFF] border border-white hover:text-[#1C4ED8] px-6 md:px-9 py-3 md:py-4 lg:py-6 hover:-translate-y-0.5 transition duration-300">
+                  Get Started
+                </Button>
+              </NavLink>
+            )}
           </div>
 
           <div className="flex mt-6 md:mt-8 flex-col sm:flex-row text-center sm:text-left items-center sm:items-center md:items-center md:justify-start justify-center w-full lg:items-center">
@@ -90,7 +112,7 @@ const LandingPage = () => {
           <CardHeader>
             <CardTitle>
               <div className="flex justify-between items-center">
-                <h1 className="font-bold text-base sm:text-lg">Top Coders This Week</h1>
+                <h1 className="font-bold text-base sm:text-lg">Top Coders in last 24 hour</h1>
                 <span className="text-xs bg-[#2c3c73] px-2 sm:px-3 py-0.5 rounded-md text-[#84ace1]">LIVE</span>
               </div>
             </CardTitle>
@@ -106,15 +128,19 @@ const LandingPage = () => {
                 <div>
                   <div className="flex gap-1 sm:gap-2 items-center flex-wrap">
                     {/* Added flex-wrap and adjusted gap */}
-                    <h1 className="text-base sm:text-lg font-bold">Nishikant</h1>
+                    <h1 className="text-base sm:text-lg font-bold">{isLoading ? (
+                      <div>Loading...</div>
+                    ) : (topCoders[0]?.name)}</h1>
                     {/* Adjusted text size */}
                     <span className="text-xs sm:text-sm bg-[#533F2F] text-[#FDE047] px-1 sm:px-2 rounded-md text-center">Legendary</span>
                     {/* Adjusted padding and text size */}
                   </div>
                   <div className="flex mb-1 text-[#989FAB] text-xs gap-0.5 items-center font-medium">
-                    <p>JavaScript</p>
+                    <p>Total Time</p>
                     <p>&#8226;</p>
-                    <p>148 hours this week</p>
+                    <p>{isLoading ? (
+                      <div>Loading...</div>
+                    ) : (`${(topCoders[0]?.totalMinutes)?.toFixed(2)} minutes`)}</p>
                   </div>
                 </div>
               </div>
@@ -126,13 +152,17 @@ const LandingPage = () => {
               <div className="flex-1 h-3/4">
                 <div>
                   <div className="flex gap-1 sm:gap-2 items-center flex-wrap">
-                    <h1 className="text-base sm:text-lg font-bold">Adarsh</h1>
+                  <h1 className="text-base sm:text-lg font-bold">{isLoading ? (
+                      <div>Loading...</div>
+                    ) : (topCoders[1]?.name)}</h1>
                     <span className="text-xs sm:text-sm bg-[#2C3656] text-[#a7bcfe] px-1 sm:px-2 rounded-md text-center">GrandMaster</span>
                   </div>
                   <div className="flex mb-1 text-[#989FAB] text-xs gap-0.5 items-center font-medium">
-                    <p>TypeScript</p>
+                    <p>Total Time</p>
                     <p>&#8226;</p>
-                    <p>140 hours this week</p>
+                    <p>{isLoading ? (
+                      <div>Loading...</div>
+                    ) : (`${(topCoders[1]?.totalMinutes)?.toFixed(2)} minutes`)}</p>
                   </div>
                 </div>
               </div>
@@ -147,15 +177,19 @@ const LandingPage = () => {
                 <div>
                   <div className="flex gap-1 sm:gap-2 items-center flex-wrap">
                     {/* Added flex-wrap and adjusted gap */}
-                    <h1 className="text-base sm:text-lg font-bold">Truptiman</h1>
+                    <h1 className="text-base sm:text-lg font-bold">{isLoading ? (
+                      <div>Loading...</div>
+                    ) : (topCoders[2]?.name)}</h1>
                     {/* Adjusted text size */}
                     <span className="text-xs sm:text-sm bg-[#2A4131] text-[#87EFAC] px-1 sm:px-2 rounded-md text-center">MasterCoder</span>
                     {/* Adjusted padding and text size */}
                   </div>
                   <div className="flex mb-1 text-[#989FAB] text-xs gap-0.5 items-center font-medium">
-                    <p>Python</p>
+                    <p>Total Time</p>
                     <p>&#8226;</p>
-                    <p>100 hours this week</p>
+                    <p>{isLoading ? (
+                      <div>Loading...</div>
+                    ) : (`${(topCoders[2]?.totalMinutes)?.toFixed(2)} minutes`)}</p>
                   </div>
                 </div>
               </div>
