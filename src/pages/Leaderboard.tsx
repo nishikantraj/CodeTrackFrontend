@@ -92,7 +92,6 @@ export default function Leaderboard() {
     ...user,
     originalRank: index + 1,
   })).filter((user:UserProps) => user.name.toLowerCase().includes(debouncedQuery));
-  
   return (
     <div className="min-h-screen text-white py-6 bg-[#171717] flex flex-col items-center overflow-auto pt-[130px]">
       {/* Title with description */}
