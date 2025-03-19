@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 
 const PrivacyPolicy = () => {
   return (
-    <div className="bg-black text-white min-h-screen py-12 px-6 md:px-20">
+    <div className="bg-black text-white min-h-screen py-40 px-6 md:px-20">
       <div className="max-w-3xl mx-auto bg-gray-900 p-8 rounded-2xl shadow-lg border border-gray-700">
-        <h1 className="text-3xl font-bold text-green-400 mb-6">Privacy Policy</h1>
+        <h1 className="text-3xl font-bold text-blue-400 mb-6">Privacy Policy</h1>
         <p className="text-gray-300 mb-4"> <strong>Effective Date:</strong> March 2025</p>
         
         <p className="text-gray-300 mb-6">Welcome to <strong>CodeChamp</strong> and <strong>CodeTracker</strong>! Your privacy is important to us. This Privacy Policy explains how we collect, use, and protect your data while using our services.</p>
