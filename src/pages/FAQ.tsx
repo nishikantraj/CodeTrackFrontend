@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import Typed from "typed.js";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import { NavLink } from "react-router-dom";
+import { Button } from "@/components/ui/Button";
 
 const faqs = [
   {
@@ -50,43 +52,44 @@ export default function FAQ() {
   };
 
   return (
-    <div className="bg-[#102A26] text-[#F4E285] min-h-screen px-6 py-12 rounded-lg">
+    <div className="min-h-screen w-full py-12 mt-20 overflow-hidden text-white px-4 md:px-6 lg:px-8 bg-[#171717] pb-20">
       
       {/* Hero Section with Typed.js */}
       <div className="max-w-5xl mx-auto text-center">
-        <h1 className="text-5xl font-extrabold text-[#A7D7C5]">
+        <h1 className="text-3xl md:text-4xl font-extrabold">
           <span ref={typedRef}></span>
         </h1>
-        <p className="text-lg text-gray-300 mt-4">
-          Have questions about Codetracker? Here are the answers to some common queries.
+        <p className="text-base md:text-lg text-[#D1D5DB] mt-4 px-2">
+        Find answers to common questions about CodeChamp and how it helps track your coding journey.
         </p>
       </div>
 
       {/* FAQ Section */}
-      <div className="max-w-3xl mx-auto mt-12 space-y-6">
+      <div className="max-w-3xl mx-auto mt-8 md:mt-12 space-y-4 md:space-y-6">
         {faqs.map((faq, index) => (
-          <div key={index} className="bg-[#1B4332] border-none shadow-md p-6 rounded-lg">
+          <div key={index} className="bg-[#262626] border-none shadow-md p-4 md:p-6 rounded-lg">
             <button
-              className="flex justify-between items-center w-full text-left text-lg font-semibold text-[#A7D7C5]"
+              className="flex justify-between items-center w-full text-left text-base md:text-lg font-semibold cursor-pointer pb-1"
               onClick={() => toggleFAQ(index)}
             >
-              {faq.question}
-              {openIndex === index ? <ChevronUp className="w-6 h-6" /> : <ChevronDown className="w-6 h-6" />}
+              <span className="pr-2">{faq.question}</span>
+              {openIndex === index ? <ChevronUp className="w-5 h-5 md:w-6 md:h-6 flex-shrink-0" /> : <ChevronDown className="w-5 h-5 md:w-6 md:h-6 flex-shrink-0" />}
             </button>
-            {openIndex === index && <p className="text-gray-300 mt-2">{faq.answer}</p>}
+            {openIndex === index && <p className="text-gray-300 mt-2 pt-2 border-t border-[#404040] text-sm md:text-base">{faq.answer}</p>}
           </div>
         ))}
-      </div>
 
-      {/* Call to Action */}
-      <div className="text-center mt-12">
-        <a href="https://marketplace.visualstudio.com/items?itemName=Nishikant.codetrackerextension" target="_blank" rel="noopener noreferrer">
-          <button className="bg-[#A7D7C5] text-[#102A26] font-semibold px-8 py-4 text-lg rounded-lg shadow-lg hover:bg-[#8CC3B3] transition cursor-pointer">
-            Get Started with Codechamp 🚀
-          </button>
-        </a>
+        <div className="bg-[#181D2E] flex flex-col justify-center items-center gap-3 md:gap-4 py-4 px-3 md:px-4 rounded-xl mt-6 md:mt-8">
+          <h3 className="text-lg md:text-xl font-bold text-center">Still Have Questions?</h3>
+          <p className="text-[#D1D5DB] text-base md:text-lg text-center">Can't find the answer you're looking for? Please contact our friendly support team.</p>
+          <NavLink
+            to={"/contact"}
+          >
+            <Button className="cursor-pointer bg-[#2463EB] hover:bg-[#1C4ED8] text-sm py-4 md:py-6 mt-1">Contact Support</Button>
+          </NavLink>
+        </div>
       </div>
-
+      
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "./ui/Button";
-import logo from "../assets/image/codechamp.png";
+import logo from "../assets/image/codechampfinal.png";
 import { Link, NavLink } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import profile from "../assets/image/profile.png";
@@ -46,20 +46,16 @@ const Header = () => {
     setMenuOpen(false);
   };
 
-  return (
-    <div>
-      <div className="w-full overflow-hidden py-2">
-        {/* Marquee Banner */}
-        <div className="bg-[#FFF7D6] text-[#2C5E1A] p-2 w-full overflow-hidden whitespace-nowrap relative">
-          <div className="animate-marquee inline-block">
-            <span className="text-lg font-bold">
-              🚀 Important Notice: Our backend is fully operational! However, as we're currently on a free-tier Render server, there may be occasional minor delays in API responses. We're working on upgrading to a dedicated server for even better performance. Your support helps keep Codechamp free and growing! ❤️ If you notice any inconsistencies in your tracked timing, please contact us.
-            </span>
-          </div>
-        </div>
-      </div>
+  const scrollToLeaderboard = () => {
+    window.dispatchEvent(new Event("scrollToLeaderboard"));
+  };
+  const scrollToFeature = () => {
+    window.dispatchEvent(new Event("scrollToFeature"));
+  };
 
-      <div className="flex justify-between items-center px-8 py-4 bg-black text-white shadow-md relative">
+  return (
+    <div className="fixed w-full z-50">
+      <div className="flex justify-between items-center px-6 md:px-15 py-6 bg-[#171717] text-white shadow-md relative">
         <div className="flex items-center space-x-4">
           <button 
             onClick={() => setMenuOpen(!menuOpen)} 
@@ -71,7 +67,7 @@ const Header = () => {
             <img 
               src={logo} 
               alt="CodeTracker" 
-              className="cursor-pointer w-32 brightness-125 contrast-110"
+              className="cursor-pointer w-24 brightness-125 contrast-110"
             />
           </Link>
         </div>
@@ -85,20 +81,44 @@ const Header = () => {
             ${menuOpen ? 'block' : 'hidden'}
           `}
         >
-          <ul className="flex flex-col lg:flex-row items-center gap-6 lg:gap-10 text-lg p-4 lg:p-0">
-            <li>
+          <ul className="flex flex-col lg:flex-row items-center gap-6 lg:gap-6 text-lg p-4 lg:p-0">
+          <li>
               <NavLink 
                 to={""} 
-                className={({ isActive }) => (isActive ? "text-green-400" : "hover:text-green-300")}
-                onClick={closeMobileMenu}
+                onClick={() => {
+                  closeMobileMenu()
+                  window.scrollTo({ top: 0, behavior: "smooth" })
+                }}
               >
                 Home
               </NavLink>
             </li>
             <li>
               <NavLink 
+                to={""}
+                onClick={()=>{
+                  closeMobileMenu()
+                  scrollToLeaderboard()
+                }}
+              >
+                Leaderboard
+              </NavLink>
+            </li>
+            <li>
+              <NavLink 
+                to={""}
+                onClick={()=>{
+                  closeMobileMenu()
+                  scrollToFeature()
+                }}
+              >
+                Features
+              </NavLink>
+            </li>
+            <li>
+              <NavLink 
                 to={"about"} 
-                className={({ isActive }) => (isActive ? "text-green-400" : "hover:text-green-300")}
+                className={({ isActive }) => (isActive ? "text-[#5DA0F1]" : "hover:text-[#5DA0F1]")}
                 onClick={closeMobileMenu}
               >
                 About
@@ -107,7 +127,7 @@ const Header = () => {
             <li>
               <NavLink 
                 to={"installation"} 
-                className={({ isActive }) => (isActive ? "text-green-400" : "hover:text-green-300")}
+                className={({ isActive }) => (isActive ? "text-[#5DA0F1]" : "hover:text-[#5DA0F1]")}
                 onClick={closeMobileMenu}
               >
                 Installation
@@ -116,10 +136,10 @@ const Header = () => {
             <li>
               <NavLink 
                 to={"faq"} 
-                className={({ isActive }) => (isActive ? "text-green-400" : "hover:text-green-300")}
+                className={({ isActive }) => (isActive ? "text-[#5DA0F1]" : "hover:text-[#5DA0F1]")}
                 onClick={closeMobileMenu}
               >
-                FAQ's
+                FAQs
               </NavLink>
             </li>
           </ul>
@@ -133,7 +153,7 @@ const Header = () => {
           {isLoggedIn[0] ? (
             <div className="flex items-center space-x-4">
               <Button 
-                className="bg-green-500 text-black hover:bg-green-600 cursor-pointer" 
+                className="bg-blue-400 hover:bg-blue-600 cursor-pointer" 
                 onClick={() => handleCopy(isLoggedIn[1]?.sessionKey || "")}
               >
                 Session Key
@@ -144,12 +164,12 @@ const Header = () => {
                   <img 
                     src={profile} 
                     alt={isLoggedIn[1]?.name} 
-                    className="w-9 h-9 rounded-full border-2 border-[#3DDC97] cursor-pointer"
+                    className="w-9 h-9 rounded-full border-2 border-[#3d6adc] cursor-pointer"
                   />
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-56 bg-[#0D1117] border border-[#3DDC97] text-white shadow-lg rounded-lg">
-                  <DropdownMenuLabel className="text-[#3DDC97] font-semibold">My Account</DropdownMenuLabel>
-                  <DropdownMenuSeparator className="border-[#3DDC97]" />
+                <DropdownMenuContent className="w-56 bg-[#0D1117] border border-[#3d77dc] text-white shadow-lg rounded-lg">
+                  <DropdownMenuLabel className="text-[#538bd8] font-semibold">My Account</DropdownMenuLabel>
+                  <DropdownMenuSeparator className="border-[#3dcadc]" />
                   <DropdownMenuGroup>
                     <DropdownMenuItem className="hover:bg-[#161B22]">Profile</DropdownMenuItem>
                     <DropdownMenuItem className="hover:bg-[#161B22]">Settings</DropdownMenuItem>
@@ -168,12 +188,12 @@ const Header = () => {
           ) : (
             <div className="flex items-center space-x-4">
               <NavLink to={"signin"} onClick={closeMobileMenu}>
-                <Button className="bg-green-500 text-black hover:bg-green-600 cursor-pointer">
+                <Button className="text-[#60A5FA] hover:bg-[#3C82F6] hover:text-white cursor-pointer border border-[#60A5FA]">
                   Signin
                 </Button>
               </NavLink>
               <NavLink to={"signup"} onClick={closeMobileMenu}>
-                <Button className="bg-yellow-400 text-black hover:bg-yellow-500 cursor-pointer">
+                <Button className="bg-[#4279f0] text-white hover:bg-[#2463EB] cursor-pointer">
                   Signup
                 </Button>
               </NavLink>

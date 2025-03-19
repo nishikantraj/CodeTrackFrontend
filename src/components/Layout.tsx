@@ -7,7 +7,7 @@ const Layout = ({children}:PropsWithChildren) => {
     <div className="w-full min-h-screen flex flex-col">
         <Header/>
 
-        <main className="flex-grow px-4 sm:px-6 md:px-15 py-2">
+        <main className="flex-grow">
             {children}
         </main>
 

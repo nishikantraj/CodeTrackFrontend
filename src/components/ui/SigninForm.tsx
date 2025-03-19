@@ -149,15 +149,15 @@ export function Signin({ className, ...props }: React.ComponentProps<"div">) {
     return ()=> typed.destroy();
   },[]);
   return (
-    <div className={cn("flex flex-col gap-6", className)} {...props}>
-      <Card className="overflow-hidden bg-[#0D1117] text-[#E3E6E8] border-[#1F2937]">
+    <div className={cn("flex flex-col gap-6 py-40", className)} {...props}>
+      <Card className="w-full overflow-hidden bg-[#262626] text-[#E3E6E8] border-[#1F2937]">
         <CardContent className="grid p-0 md:grid-cols-2">
           <form onSubmit={handleSubmit}
             className="p-6 md:p-8"
           >
             <div className="flex flex-col gap-6">
               <div className="flex flex-col items-center text-center">
-                <h1 className="text-2xl font-bold text-[#3DDC97]"><span ref={typedRef}></span></h1>
+                <h1 className="text-2xl font-bold"><span ref={typedRef}></span></h1>
                 <p className="text-balance text-gray-400">
                   Login to your Codechamp account
                 </p>
@@ -171,7 +171,7 @@ export function Signin({ className, ...props }: React.ComponentProps<"div">) {
                   onChange={handleChange}
                   placeholder="m@example.com"
                   required
-                  className="bg-[#161B22] border-[#3DDC97] text-white"
+                  className="bg-[#404040] text-white"
                 />
               </div>
               <div className="grid gap-2">
@@ -179,38 +179,38 @@ export function Signin({ className, ...props }: React.ComponentProps<"div">) {
                   <Label htmlFor="password">Password</Label>
                   <span
                     onClick={onToast}
-                    className="ml-auto text-sm text-[#3DDC97] underline-offset-2 hover:underline cursor-pointer"
+                    className="ml-auto text-sm text-[#3983F7] underline-offset-2 hover:underline cursor-pointer"
                   >
                     Forgot your password?
                   </span>
                 </div>
-                <Input id="password" minLength={6} value={formData.password} onChange={handleChange} type="password" required className="bg-[#161B22] border-[#3DDC97] text-white" />
+                <Input id="password" minLength={6} value={formData.password} onChange={handleChange} type="password" required className="bg-[#404040] text-white" />
               </div>
-              <Button type="submit" disabled={loading} className="w-full bg-[#3DDC97] text-black hover:bg-[#32c386] cursor-pointer">
+              <Button type="submit" disabled={loading} className="w-full bg-[#2463EB] hover:bg-[#1C4ED8] cursor-pointer">
                 {loading ? "Signing in..." : "Signin"}
               </Button>
-              <div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-[#3DDC97]">
-                <span className="relative z-10 bg-[#0D1117] px-2 text-gray-400">
+              <div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-[#749fc4]">
+                <span className="relative z-10 bg-[#262626] px-2 text-gray-400">
                   Or continue with
                 </span>
               </div>
               <div className="flex justify-center items-center gap-4">
-              <Button variant="outline" onClick={onToast} className="w-full cursor-pointer border-[#3DDC97] text-[#3DDC97] hover:text-black hover:bg-[#606871] hover:border-[#24292E]">
+              <Button variant="outline" onClick={onToast} className="w-full cursor-pointer border-[#555c59] hover:text-black hover:bg-[#606871] hover:border-[#24292E]">
                     <Github />
                     GitHub
                 </Button>
-                <Button variant="outline" onClick={onToast} className="w-full cursor-pointer border-[#3DDC97] text-[#3DDC97] hover:bg-[#1DA1F2] hover:border-[#1DA1F2] hover:text-black">
+                <Button variant="outline" onClick={onToast} className="w-full cursor-pointer border-[#096894] hover:bg-[#1DA1F2] hover:border-[#1DA1F2] hover:text-black">
                     <Twitter/>
                     Twitter
                 </Button>
               </div>
               <div className="text-center text-sm text-gray-400">
                 Don&apos;t have an account?{' '}
-                <Link to={"/signup"} className="underline text-[#3DDC97]">Sign up</Link>
+                <Link to={"/signup"} className="underline text-[#1f6cd6] hover:text-[#245edd]">Sign up</Link>
               </div>
             </div>
           </form>
-          <div className="relative hidden md:block bg-[#161B22]">
+          <div className="relative hidden md:block bg-[#262626]">
             <img
               src={login}
               alt="Image"
@@ -219,7 +219,7 @@ export function Signin({ className, ...props }: React.ComponentProps<"div">) {
           </div>
         </CardContent>
       </Card>
-      <div className="text-center text-xs text-gray-400 [&_a]:underline [&_a]:text-[#3DDC97] hover:[&_a]:text-[#32c386]">
+      <div className="text-center text-xs text-gray-400 [&_a]:underline [&_a]:text-[#3983F7] hover:[&_a]:text-[#245edd]">
         By clicking continue, you agree to our <Link to="/privacy">Terms of Service</Link>{' '}
         and <Link to="/privacy">Privacy Policy</Link>.
       </div>
