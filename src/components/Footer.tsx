@@ -123,7 +123,7 @@ const Footer = () => {
             <div className="flex text-sm text-[#D1D5DB] gap-1">
               <p>SDE</p>
               <p>&#8226;</p>
-              <p>Morphic</p>
+              <p>Startup</p>
             </div>
           </div>
         </div>
