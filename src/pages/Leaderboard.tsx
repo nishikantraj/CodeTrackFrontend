@@ -6,11 +6,10 @@ import grandMaster from "../assets/Logo/Grandmaster.png";
 import masterCoder from "../assets/Logo/MasterCoder.png";
 import coder from "../assets/Logo/Coder.png";
 import languages from "@/utils/language";
-import { useQuery } from "@tanstack/react-query";
-import fetchData from "@/utils/fetchData";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import toast from "react-hot-toast";
+import { useLeaderboard } from "@/context/LeaderboardContextAPI";
 // import data from '../utils/dummyData'
 interface LanguageUsage {
   language: string;
@@ -53,15 +52,7 @@ export default function Leaderboard() {
     return ()=> clearTimeout(handler);
   },[searchQuery]);
 
-  const { data, isLoading, error} = useQuery({
-    queryKey: ["leaderboard"],
-    queryFn: fetchData,
-    staleTime: 5 * 60 * 1000,
-    gcTime: 10 * 60 * 1000,
-    refetchInterval: 5 * 60 * 1000,
-    refetchOnWindowFocus: true,
-  });
-
+  const {data, isLoading, error} = useLeaderboard();
 
   if(isLoading)
     return (

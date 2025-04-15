@@ -29,7 +29,6 @@ function App() {
   }, [location]);
 
   const isAuthenticated = ()=>{
-    console.log(location);
     return !!localStorage.getItem("token");
   }
 
