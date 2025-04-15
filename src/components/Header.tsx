@@ -46,9 +46,6 @@ const Header = () => {
     setMenuOpen(false);
   };
 
-  const scrollToLeaderboard = () => {
-    window.dispatchEvent(new Event("scrollToLeaderboard"));
-  };
   const scrollToFeature = () => {
     window.dispatchEvent(new Event("scrollToFeature"));
   };
@@ -95,11 +92,7 @@ const Header = () => {
             </li>
             <li>
               <NavLink 
-                to={""}
-                onClick={()=>{
-                  closeMobileMenu()
-                  scrollToLeaderboard()
-                }}
+                to={"/leaderboard"}
               >
                 Leaderboard
               </NavLink>

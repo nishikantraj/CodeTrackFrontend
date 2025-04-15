@@ -1,8 +1,7 @@
 import { Button } from "@/components/ui/Button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/Card";
+import { useLeaderboard } from "@/context/LeaderboardContextAPI";
 import { useAuth } from "@/hooks/useAuth";
-import fetchData from "@/utils/fetchData";
-import { useQuery } from "@tanstack/react-query";
 import { ChevronRight } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
@@ -26,22 +25,11 @@ const LandingPage = () => {
       return () => typed.destroy();
     }, []);
 
-    const scrollToLeaderboard = () => {
-      window.dispatchEvent(new Event("scrollToLeaderboard"));
-    };
 
     // data fetching
-    const { data, isLoading} = useQuery({
-      queryKey: ["leader"],
-      queryFn: fetchData,
-      staleTime: 5 * 60 * 1000,
-      gcTime: 10 * 60 * 1000,
-      refetchInterval: 5 * 60 * 1000,
-      refetchOnWindowFocus: true,
-    });
+    const { data, isLoading } = useLeaderboard();
     const topCoders = Array.isArray(data) ? data.slice(0, 3) : [];
-    console.log(topCoders);
-    
+
   return (
     <div className="bg-[#242424] bg-[radial-gradient(circle,_rgba(36,36,36,1)_0%,_rgba(24,24,24,1)_100%)] pl-6">
       <div className="min-h-screen w-full py-8 mt-20 overflow-hidden text-white px-4 md:px-6 lg:px-8">
@@ -61,8 +49,7 @@ const LandingPage = () => {
 
           <div className="mt-5 flex flex-col sm:flex-row gap-3 items-center sm:items-start md:items-start md:justify-start justify-center w-full">
             <NavLink
-              to={""}
-              onClick={scrollToLeaderboard}
+              to={"/leaderboard"}
             >
               <Button
               className="w-full sm:w-auto text-white cursor-pointer font-bold bg-[#3868e9] hover:bg-[#1C4ED8] px-6 md:px-9 py-3 md:py-4 lg:py-6 hover:-translate-y-0.5 transition duration-300">
@@ -199,8 +186,7 @@ const LandingPage = () => {
           <CardFooter className="flex justify-center items-center px-3 sm:px-6 pb-3 sm:pb-4">
             <div className="flex items-center border-t border-t-white/30 text-[#4698f0] pt-2 sm:pt-2.5 w-full justify-center hover:text-[#92C5FD] cursor-pointer text-xs sm:text-sm">
               <NavLink
-                to={""}
-                onClick={scrollToLeaderboard}
+                to={"/leaderboard"}
               >
                 <p>See Full Leaderboard</p>
               </NavLink>
