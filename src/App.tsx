@@ -13,6 +13,7 @@ import { useEffect } from "react"
 import ScrollTop from "./components/ScrollTop"
 import PrivacyPolicy from "./pages/PrivacyPolicy"
 import Home from "./pages/Home"
+import Profile from "./pages/Profile"
 
 ReactGA.initialize("G-4D3805M3RW");
 
@@ -46,6 +47,7 @@ function App() {
           <Route path="/signup" element={<SignupForm/>}/>
           <Route path="/contact" element={<Contact/>}/>
           <Route path="/privacy" element={<PrivacyPolicy/>}/>
+          <Route path="/profile" element={<Profile/>}/>
 
           <Route path="/:userName" element={isAuthenticated() ? <Leaderboard/> : < Navigate to={"/"} replace/>}/>
         </Routes>

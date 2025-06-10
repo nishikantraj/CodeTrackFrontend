@@ -164,7 +164,12 @@ const Header = () => {
                   <DropdownMenuLabel className="text-[#538bd8] font-semibold">My Account</DropdownMenuLabel>
                   <DropdownMenuSeparator className="border-[#3dcadc]" />
                   <DropdownMenuGroup>
-                    <DropdownMenuItem className="hover:bg-[#161B22]">Profile</DropdownMenuItem>
+                    <NavLink
+                      to={"/profile"}
+                    >
+                      <DropdownMenuItem className="hover:bg-[#161B22] cursor-pointer transition"
+                      >Profile</DropdownMenuItem>
+                    </NavLink>
                     <DropdownMenuItem className="hover:bg-[#161B22]">Settings</DropdownMenuItem>
                     <DropdownMenuItem className="hover:bg-[#161B22]">Support</DropdownMenuItem>
                   </DropdownMenuGroup>
