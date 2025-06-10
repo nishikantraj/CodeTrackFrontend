@@ -53,42 +53,6 @@ export function Signin({ className, ...props }: React.ComponentProps<"div">) {
   };
 
 
-  //   e.preventDefault();
-  //   setLoading(true);
-
-  //   try {
-  //     const response = await axios.post(`${BASE_API_URL}/user/login`, formData);
-  //     toast.success("Successfully logged in.");
-  //     console.log(response);
-      
-  //     setTimeout(()=> navigate("/"), 2000);
-  //   } catch (err:any) {
-  //     console.log(err);
-      
-  //     if(err.response?.status === 400){
-  //       const errorMessages = err.response?.data?.message;
-  //       console.log("Error response:", err.response?.data);
-  //       console.log("Error message: ", errorMessages);
-  //       console.log(typeof errorMessages);
-        
-
-  //       if(Array.isArray(errorMessages)){
-  //         console.log("passed");
-  //         errorMessages.forEach((errMsg) => {toast.error(errMsg)
-  //           console.log("passed too");
-            
-  //         });
-  //       }else{
-  //         toast.error(errorMessages || "Sigin failed. Try again.")
-  //       }
-  //     }else{
-  //       toast.error("Something went wrong. Try again later.");
-  //     }
-  //   }
-  //   finally{
-  //     setLoading(false);
-  //   }
-  // };
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -96,6 +60,8 @@ export function Signin({ className, ...props }: React.ComponentProps<"div">) {
     try {
       const response = await axios.post(`${BASE_API_URL}/user/login`, formData,{ withCredentials: true });
       toast.success("Successfully logged in.");
+      console.log(response.data);
+      
       const {token, user} = response.data;
       localStorage.setItem("token", token);
       localStorage.setItem("userData",  JSON.stringify(user));
